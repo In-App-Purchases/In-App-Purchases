@@ -1,0 +1,17 @@
+body {
+    user-select: none;
+}
+
+.container {
+    margin-top: 1%;
+    background-color: gray;
+    text-align: center;
+}
+
+h2 {
+    padding: 2%;
+}
+
+.landing {
+    display: none;
+}

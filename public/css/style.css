@@ -1,0 +1,38 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    padding-top: 70px;
+}
+
+#rigUpgrades{
+    display: flex;
+}
+#speedUpgrades{
+    display: flex;
+}
+.upgrade{
+    flex: 1;
+}
+
+div#upgradeMenuDropdown {
+    position: relative;
+    height: 80%;
+    width: 100%;
+}
+.container {
+    margin-top: 1%;
+    text-align: center;
+}
+
+h2 {
+    padding: 2%;
+}
+
+.landing {
+    display: none;
+}
+
+#scrollUpgrades {
+    height: inherit;
+    overflow: scroll;
+}

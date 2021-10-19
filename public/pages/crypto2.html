@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="../js/crypto2.js"></script>
+    <title>Crypto Clicker</title>
+</head>
+<body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand">Crypto Clicker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="./landing.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./crypto2.html" id="clickerLink">Clicker</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./invest.html" id="investLink">Invest</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    About Us
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://mattm401.github.io/">CISC 474</a>
+                    <a class="dropdown-item" href="about.html">The Dream Team</a>
+                    <a class="dropdown-item" href="tools.html">Tools We Used</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div style="text-align: center;" class="container navbar-light bg-light" id="landing">
+        <div class="row">
+            <div class="col col-md-6" id="click">
+                <button class="btn btn-light" style="margin-top: 15%;"><img src="../img/noun_coin_4020418.svg" alt="coin" id="coinIcon" width="400" height="400" ></button>
+            </div>
+            <div class="col col-md-6">
+                <span style="font-size:300%; font-family: impact;" id="counter">0</span>
+                <br>
+                <button style="font-size:200%;" id="saveButton">Save</button>
+                <button style="font-size:200%;" id="loadButton">Load</button>
+                <div class="container" style="text-align: center;">
+                    <audio src="../sfx/Pick_upgrade.wav" id='pick_upgrade'></audio>
+                    <audio src="../sfx/GPU_upgrade.wav" id='gpu_upgrade'></audio>
+                    <audio src="../sfx/Coin_proto_1.wav" id='coin_click'></audio>
+                    <div class="row">
+                        <button id="upgrade1" class="btn btn-light">
+                                upgrade 1 |
+                                <span class="upgradeIcon">cost: </span>
+                                <span id="costSpeed1">10</span>
+                                <br>
+                                <img src="../img/noun_Pickaxe_3059983.svg" alt="pickaxe" height="60" width="60" id="rig1" >
+                        </button>
+                        <button id="upgrade2" class="btn btn-light">
+                                upgrade 2 |
+                                <span class="upgradeIcon">cost: </span>
+                                <span id="costSpeed2">100</span>
+                                <br>
+                                <img src="../img/noun_Pickaxe_3059983.svg" alt="pickaxe" height="60" width="60" id="rig2" >
+                        </button>
+                        <button id="upgrade3" class="btn btn-light">
+                                upgrade 3 |
+                                <span class="upgradeIcon">cost: </span>
+                                <span id="costSpeed3">200</span>
+                                <br>
+                                <img src="../img/noun_Pickaxe_3059983.svg" alt="pickaxe" height="60" width="60" id="rig3" >
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button id="upgrade4" class="btn btn-light">
+                                upgrade 4 |
+                                <span class="upgradeIcon">cost: </span>
+                                <span id="costSpeed4">400</span>
+                                <br>
+                                <img src="../img/noun_Pickaxe_3059983.svg" alt="pickaxe" height="60" width="60" id="rig4" >
+                        </button>
+                        <button id="upgrade5" class="btn btn-light">
+                                upgrade 5 |
+                                <span class="upgradeIcon">cost: </span>
+                                <span id="costSpeed5">1000</span>
+                                <br>
+                                <img src="../img/noun_Pickaxe_3059983.svg" alt="pickaxe" height="60" width="60" id="rig5" >
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button id="speed1" class="btn btn-light">
+                            speed 1 |
+                            <span class="upgradeIcon">cost: </span>
+                            <span id="costSpeed6" class="upgradeCost">100</span>
+                            <br>
+                            <img src="../img/noun_gpu_1132936.svg" alt="fan1" height="60" width="60">
+                        </button>
+                        <button id="speed2" class="btn btn-light">
+                            speed 2 |
+                            <span class="upgradeIcon">cost: </span>
+                            <span id="costSpeed7" class="upgradeCost">200</span>
+                            <br>
+                            <img src="../img/noun_gpu_1132936.svg" alt="fan1" height="60" width="60">
+                        </button>
+                        <button id="speed3" class="btn btn-light">
+                            speed 3 |
+                            <span class="upgradeIcon">cost: </span>
+                            <span id="costSpeed8" class="upgradeCost">400</span>
+                            <br>
+                            <img src="../img/noun_gpu_1132936.svg" alt="fan1" height="60" width="60">
+                        </button>
+                    </div>
+                    <div class="row">
+                        <button id="speed4" class="btn btn-light">
+                            speed 4 |
+                            <span class="upgradeIcon">cost: </span>
+                            <span id="costSpeed9" class="upgradeCost">800</span>
+                            <br>
+                            <img src="../img/noun_gpu_1132936.svg" alt="fan1" height="60" width="60">
+                        </button>
+                        <button id="speed5" class="btn btn-light">
+                            speed 5 |
+                            <span class="upgradeIcon">cost: </span>
+                            <span id="costSpeed10" class="upgradeCost">1200</span>
+                            <br>
+                            <img src="../img/noun_gpu_1132936.svg" alt="fan1" height="60" width="60">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+    </footer>
+</body>
+</html>

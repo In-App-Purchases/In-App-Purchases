@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    height:100%;
+    width: 100%;
+}
+.item{
+    background-color: rgb(255, 255, 255);
+    outline: black;
+    outline-style: solid;
+    outline-width: 3px;
+    height:100%;
+    width: 100%;
+}
+.heading{
+    text-align: center;
+}
+
+body, html{
+    height:100%;
+    width: 100%;
+}
+
