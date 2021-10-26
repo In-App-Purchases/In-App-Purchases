@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, child, onValue } from "firebase/database";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,6 +21,8 @@ const firebaseConfig = {
 // Initialize Firebase
 const fbapp = initializeApp(firebaseConfig);
 const db = getDatabase(fbapp);
+const auth = getAuth(fbapp);
+
 let titleRef = ref(db);
 onValue(titleRef, ss => {
     console.log(JSON.stringify(ss));
@@ -39,3 +42,18 @@ app.get('/', function(req, res) {
 });
 
 app.listen(port, () => {console.log(`listening at http://localhost:${port}`);});
+
+app.post('/register/:email/:password', (req, res) => {
+    const email = req.params.email;
+    const password = req.params.password;
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((result) => {
+        const uid = result['_tokenResponse']['localId'];
+        console.log(uid);
+        res.json({'uid': `${uid}`});
+    })
+    .catch(() => {
+        console.log('create user err');
+        res.send('create user err');
+    });
+});
