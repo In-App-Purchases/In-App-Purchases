@@ -49,11 +49,22 @@ app.post('/register/:email/:password', (req, res) => {
     createUserWithEmailAndPassword(auth, email, password)
     .then((result) => {
         const uid = result['_tokenResponse']['localId'];
-        console.log(uid);
+        res.json({'uid': `${uid}`});
+    })
+    .catch((err) => {
+        res.send(err.code);
+    });
+});
+
+app.post('/login/:email/:password', (req, res) => {
+    const email = req.params.email;
+    const password = req.params.password;
+    signInWithEmailAndPassword(auth, email, password)
+    .then((result) => {
+        const uid = result['_tokenResponse']['localId'];
         res.json({'uid': `${uid}`});
     })
     .catch(() => {
-        console.log('create user err');
-        res.send('create user err');
+        res.send(err.code);
     });
 });
