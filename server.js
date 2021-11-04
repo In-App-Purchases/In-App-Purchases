@@ -38,7 +38,7 @@ const __dirname = path.resolve(path.dirname(''));
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/pages/landing.html'));
+    res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 app.listen(port, () => {console.log(`listening at http://localhost:${port}`);});
