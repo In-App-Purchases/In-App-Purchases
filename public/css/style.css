@@ -36,3 +36,7 @@ h2 {
     height: inherit;
     overflow: scroll;
 }
+
+.dark-mode {
+    filter: invert(100%)
+}

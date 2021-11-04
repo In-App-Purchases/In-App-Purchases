@@ -15,3 +15,7 @@ h2 {
 .landing {
     display: none;
 }
+
+.dark-mode {
+    filter: invert(100%)
+}
