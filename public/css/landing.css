@@ -15,3 +15,7 @@ h2 {
 .form-group {
     padding: 1%;
 }
+
+.dark-mode {
+    filter: invert(100%)
+}

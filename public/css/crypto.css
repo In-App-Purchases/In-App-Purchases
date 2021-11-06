@@ -20,3 +20,6 @@ body, html{
     width: 100%;
 }
 
+.dark-mode {
+  filter: invert(100%)
+}
