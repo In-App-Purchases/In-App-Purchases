@@ -18,9 +18,10 @@ $('document').ready(() => {
             count = count - costs[upNum];
             delta = delta + speedUp[upNum];
             costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            $("#banner").text('');
         }
         else{
-            alert("insufficient currency");
+            $("#banner").text('Insufficient Currency');
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
@@ -33,9 +34,10 @@ $('document').ready(() => {
             count = count - costs[upNum];
             rate = rate + speedUp[upNum];
             costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            $("#banner").text('');
         }
         else{
-            alert("insufficient currency");
+            $("#banner").text('Insufficient Currency');
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
