@@ -6,11 +6,15 @@ $('document').ready(() => {
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
     let rate = 0;
+    let randomUp = 0;
+    var eventOn = false;
+    var eventCountdown = 0;
 
     $("#coinIcon").click(function(){
         playAudio2('coin_click')
         count = count + delta;
         $("#counter").text(`coins: ${count}`);
+        randomUp++;
     });
 
     const purchaseUpgrade = (upNum) => {
@@ -51,6 +55,30 @@ $('document').ready(() => {
         count = count + rate;
         $("#counter").text(`coins: ${count}`);
     },500);
+
+    setInterval(function(){
+        var chance =  Math.floor(Math.random() * 10);
+        if(eventOn == true){
+            $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
+            eventCountdown--;
+            if(eventCountdown == 0){
+                eventOn = false; 
+            }
+        }
+        else{
+            $("#eventSign").text('');
+            if(chance == 9 || randomUp >= 9){
+                randomUp = 0;
+                eventOn = true;
+                eventCountdown = 10;
+                console.log("event happens");
+            }
+            else{
+                console.log("no event");
+            }
+        }
+        
+    }, 1000);
 
     $("#upgrade1").click(function(){
         playAudio2('pick_upgrade');
