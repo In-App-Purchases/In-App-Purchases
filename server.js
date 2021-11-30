@@ -23,7 +23,7 @@ const fbapp = initializeApp(firebaseConfig);
 const db = getDatabase(fbapp);
 const auth = getAuth(fbapp);
 
-let titleRef = ref(db);
+let titleRef = ref(db, '/');
 onValue(titleRef, ss => {
     console.log(JSON.stringify(ss));
 })
@@ -73,5 +73,7 @@ app.post('/api/savedata', (req, res) => {
     const saveData = req.body.saveData;
     if(typeof saveData === JSON) {
         push(titleRef, saveData);
+        res.send('pushed');
     }
+    res.send('error pushing');
 });
