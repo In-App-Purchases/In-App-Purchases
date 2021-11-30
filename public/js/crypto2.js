@@ -1,3 +1,5 @@
+import {post} from "jquery";
+
 $('document').ready(() => {
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
@@ -131,6 +133,20 @@ $('document').ready(() => {
     $("#saveButton").click(function(){
         localStorage.setItem('Count', count);
         localStorage.setItem('Delta', delta);
+        $.ajax({
+            contentType: 'application/json',
+            data: saveData,
+            dataType: 'json',
+            url: '/api/savedata',
+            type: post,
+            success: function(result){
+                console.log("Posted");
+                console.log(result);
+            },
+            error: function (result){
+                console.log(result)
+            }
+        })
     });
 
     $("#loadButton").click(function(){
