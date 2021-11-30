@@ -2,6 +2,7 @@ $('document').ready(() => {
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
     let speedUp = [2,10,50,100,200,1,2,5,7,10];
+    let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}};
 
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
@@ -29,7 +30,9 @@ $('document').ready(() => {
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
-        console.log(upLoc);
+        var upSave = "up" + (upNum + 1).toString();
+        saveData.manual[upSave] = saveData.manual[upSave] + 1;
+        console.log(saveData);
         $(upLoc).text(costs[upNum]);
     }
 
@@ -45,7 +48,9 @@ $('document').ready(() => {
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
-        console.log(upLoc);
+        var upSave = "up" + (upNum  - 4).toString();
+        saveData.auto[upSave] = saveData.auto[upSave] + 1;
+        console.log(saveData);
         $(upLoc).text(costs[upNum]);
     }
 
