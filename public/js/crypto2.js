@@ -1,3 +1,5 @@
+import {post} from "jquery";
+
 $('document').ready(() => {
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
@@ -6,11 +8,16 @@ $('document').ready(() => {
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
     let rate = 0;
+    let randomUp = 0;
+    var eventOn = false;
+    var eventCountdown = 0;
+    let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 
     $("#coinIcon").click(function(){
         playAudio2('coin_click')
         count = count + delta;
         $("#counter").text(`coins: ${count}`);
+        randomUp++;
     });
 
     const purchaseUpgrade = (upNum) => {
@@ -18,13 +25,16 @@ $('document').ready(() => {
             count = count - costs[upNum];
             delta = delta + speedUp[upNum];
             costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            $("#banner").text('');
         }
         else{
-            alert("insufficient currency");
+            $("#banner").text('Insufficient Currency');
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
-        console.log(upLoc);
+        var upSave = "up" + (upNum + 1).toString();
+        saveData.manual[upSave] = saveData.manual[upSave] + 1;
+        console.log(saveData);
         $(upLoc).text(costs[upNum]);
     }
 
@@ -33,13 +43,16 @@ $('document').ready(() => {
             count = count - costs[upNum];
             rate = rate + speedUp[upNum];
             costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            $("#banner").text('');
         }
         else{
-            alert("insufficient currency");
+            $("#banner").text('Insufficient Currency');
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
-        console.log(upLoc);
+        var upSave = "up" + (upNum  - 4).toString();
+        saveData.auto[upSave] = saveData.auto[upSave] + 1;
+        console.log(saveData);
         $(upLoc).text(costs[upNum]);
     }
 
@@ -49,6 +62,30 @@ $('document').ready(() => {
         count = count + rate;
         $("#counter").text(`coins: ${count}`);
     },500);
+
+    setInterval(function(){
+        var chance =  Math.floor(Math.random() * 10);
+        if(eventOn == true){
+            $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
+            eventCountdown--;
+            if(eventCountdown == 0){
+                eventOn = false; 
+            }
+        }
+        else{
+            $("#eventSign").text('');
+            if(chance == 9 || randomUp >= 9){
+                randomUp = 0;
+                eventOn = true;
+                eventCountdown = 10;
+                console.log("event happens");
+            }
+            else{
+                console.log("no event");
+            }
+        }
+        
+    }, 1000);
 
     $("#upgrade1").click(function(){
         playAudio2('pick_upgrade');
@@ -96,6 +133,20 @@ $('document').ready(() => {
     $("#saveButton").click(function(){
         localStorage.setItem('Count', count);
         localStorage.setItem('Delta', delta);
+        $.ajax({
+            contentType: 'application/json',
+            data: saveData,
+            dataType: 'json',
+            url: '/api/savedata',
+            type: post,
+            success: function(result){
+                console.log("Posted");
+                console.log(result);
+            },
+            error: function (result){
+                console.log(result)
+            }
+        })
     });
 
     $("#loadButton").click(function(){

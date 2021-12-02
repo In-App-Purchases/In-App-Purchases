@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, onValue } from "firebase/database";
+import { getDatabase, ref, child, onValue, push } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,7 +23,7 @@ const fbapp = initializeApp(firebaseConfig);
 const db = getDatabase(fbapp);
 const auth = getAuth(fbapp);
 
-let titleRef = ref(db);
+let titleRef = ref(db, '/');
 onValue(titleRef, ss => {
     console.log(JSON.stringify(ss));
 })
@@ -67,4 +67,13 @@ app.post('/login/:email/:password', (req, res) => {
     .catch(() => {
         res.send(err.code);
     });
+});
+
+app.post('/api/savedata', (req, res) => {
+    const saveData = req.body.saveData;
+    if(typeof saveData === JSON) {
+        push(titleRef, saveData);
+        res.send('pushed');
+    }
+    res.send('error pushing');
 });
