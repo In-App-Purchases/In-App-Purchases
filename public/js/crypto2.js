@@ -1,5 +1,3 @@
-import {post} from "jquery";
-
 $('document').ready(() => {
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
