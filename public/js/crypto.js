@@ -1,5 +1,9 @@
 let a = 0;
 $('document').ready(() => {
+    $.get('/coin', (res) => {
+        $('#coinImg').attr('src',`/img/${res}.png`);
+    });
+
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
     let speedUp = [2,10,50,100,200,1,2,5,7,10];
 

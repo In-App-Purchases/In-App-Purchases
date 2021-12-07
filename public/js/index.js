@@ -43,7 +43,7 @@ const signIn = () => {
       $('#passAlert').html('email or password invalid - please try again');
     } else {
       document.cookie = `session=${res}`;
-      window.location.href='/crypto';
+      window.location.href='/';
     }
   });
 };

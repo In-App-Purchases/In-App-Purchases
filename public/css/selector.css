@@ -1,0 +1,7 @@
+.card {
+  cursor: pointer;
+}
+
+.card:active {
+  background-color: antiquewhite;
+}
