@@ -15,7 +15,7 @@ $('document').ready(() => {
     var eventCountdown = 0;
     let saveData = {uid: localStorage['uid'], manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 
-    $("#coinIcon").click(function(){
+    $("#coinImg").click(function(){
         playAudio2('coin_click')
         count = count + delta;
         $("#counter").text(`coins: ${count}`);
