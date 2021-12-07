@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Crypto Clicker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand">Crypto Clicker</a>
+    <nav class="navbar navbar-expand-lg navbar-dark text-success bg-dark">
+        <a class="navbar-brand">Crypto<strong>Clicker</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="./crypto2.html" id="clickerLink">Clicker</a>
                 </li>
@@ -39,46 +36,48 @@
     </nav>
     <br>
     <div class="container navbar-light bg-light" id="landing">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <h2>Cryptocurrency 1</h2>
-                <div id="my_dataviz"></div>
-              </div>
-              <div class="carousel-item">
-                <h2>Cryptocurrency 2</h2>
-                <div id="my_dataviz2"></div>
-              </div>
-              <div class="carousel-item">
-                <h2>Cryptocurrency 3</h2>
-                <div id="my_dataviz3"></div>
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
+        <div class="row-auto">
+            <h2 id="landingHeader">Welcome to Crypto Clicker!</h2>
+        </div>
+        <div style="padding-bottom: 2%;" class="col-auto login" id="loginPage">
+            <form>
+                <div class="form-group">
+                  <label for="inputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                  <p class="alert alert-danger" id="emailAlert" style="display: none;"></p>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword1">Password</label>
+                  <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                  <p class="alert alert-danger" id="passAlert" style="display: none;"></p>
+                </div>
+                <div id="pass2" class="form-group">
+                  <label for="inputPassword2">Confirm Password</label>
+                  <input type="password" class="form-control" id="inputPassword2" placeholder="Confirm Password">
+                </div>
+                <button id="submitLogin" type="button" class="btn btn-light">Register</button>
+                <button id="signInLink" type="button" class="btn btn-light">Already Have An Account?</button>
+            </form>
+        </div>
+        <div id="getStarted" class="col-auto" style="display: none;">
+            <h3>Get Started:</h3>
+            <button style="margin-bottom: 2%;" type="button" class="btn btn-primary btn-lg" id="cryptoAltButton">Crypto Clicker</button>
+        </div>
     </div>
     <script>
-      document.onkeypress = function(e) {
-          e = e || window.event;
+        document.onkeypress = function(e) {
+            e = e || window.event;
 
-          if(e.keyCode === 13){
-              document.documentElement.classList.toggle('dark-mode');
-              
-          }
-      }
-  </script>
+            if(e.keyCode === 13){
+                document.documentElement.classList.toggle('dark-mode');
+                
+            }
+        }
+    </script>
     <footer>
-        <script src="https://d3js.org/d3.v6.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-        <script src="../js/invest.js"></script>
+        <script src="/js/index.js"></script>
     </footer>
 </body>
 

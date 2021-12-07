@@ -1,12 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, child, onValue, push } from "firebase/database";
+import { getDatabase, ref, child, onValue, update } from "firebase/database";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDncQ5Oi670XWPju9h12GXZO7mmkIRcnLk",
   authDomain: "in-app-purchases-474.firebaseapp.com",
@@ -17,54 +11,95 @@ const firebaseConfig = {
   appId: "1:854630314130:web:2c9def1db93adedd12364b",
   measurementId: "G-3TLCX4C6X4"
 };
-
-// Initialize Firebase
 const fbapp = initializeApp(firebaseConfig);
 const db = getDatabase(fbapp);
 const auth = getAuth(fbapp);
-
 let titleRef = ref(db, '/');
+let users = child(titleRef, 'users');
+let localDB = {};
 onValue(titleRef, ss => {
-    console.log(JSON.stringify(ss));
-})
+    localDB = JSON.parse(JSON.stringify(ss));
+});
 
+import jwt from 'jsonwebtoken';
 import express from 'express';
 import path from 'path';
+import cookieParser from "cookie-parser";
+
 const port = process.env.PORT || 3000;
 const app = express();
-
 const __dirname = path.resolve(path.dirname(''));
+const jwtSig = '8180e73223e2';
 
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, 'private/pages/index.html'));
+});
+
+app.get('/crypto', function(req, res) {
+    const jwtUID = req.cookies.session;
+    try {
+        const uid = jwt.verify(jwtUID, jwtSig).uid;
+        if(localDB.users[`${uid}`]) {
+            res.sendFile(path.join(__dirname, 'private/pages/crypto.html'));
+        }
+    } catch(err) {
+        res.send(`<body><div class="container"><h1 style="font-family: consolas; color: red; margin-top: 15%; text-align: center;">
+                    Error: Could not authenticate user<br>Please sign in <a href='/'>here</a>
+                    </h1></div></body>`);
+    }
 });
 
 app.listen(port, () => {console.log(`listening at http://localhost:${port}`);});
 
-app.post('/register/:email/:password', (req, res) => {
+app.get('/register/:email/:password1/:password2', (req, res) => {
+    const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     const email = req.params.email;
-    const password = req.params.password;
-    createUserWithEmailAndPassword(auth, email, password)
+    const password1 = req.params.password1;
+    const password2 = req.params.password2;
+    if(password1 !== password2) {
+        res.send('pdnm');
+        return;
+    }
+    const checkEmail = !(regEmail.test(email));
+    const checkPass = !(regPass.test(password1));
+    if(checkEmail || checkPass) {
+        if(checkEmail && checkPass) {
+            res.send('fep');
+        } else if(checkEmail) {
+            res.send('fe');
+        } else if(checkPass) {
+            res.send('fp');
+        }
+        return;
+    }
+    createUserWithEmailAndPassword(auth, email, password1)
     .then((result) => {
         const uid = result['_tokenResponse']['localId'];
-        res.json({'uid': `${uid}`});
+        update(child(users, uid), {'email': email, 'password': password1});
+        const j = jwt.sign({'uid': uid}, jwtSig);
+        res.send(j);
     })
     .catch((err) => {
         res.send(err.code);
     });
 });
 
-app.post('/login/:email/:password', (req, res) => {
+app.get('/login/:email/:password', (req, res) => {
     const email = req.params.email;
     const password = req.params.password;
     signInWithEmailAndPassword(auth, email, password)
     .then((result) => {
         const uid = result['_tokenResponse']['localId'];
-        res.json({'uid': `${uid}`});
+        const j = jwt.sign({'uid': uid}, jwtSig);
+        res.send(j);
     })
-    .catch(() => {
+    .catch((err) => {
         res.send(err.code);
     });
 });
@@ -72,8 +107,20 @@ app.post('/login/:email/:password', (req, res) => {
 app.post('/api/savedata', (req, res) => {
     const saveData = req.body.saveData;
     if(typeof saveData === JSON) {
-        push(titleRef, saveData);
+        console.log(saveData);
         res.send('pushed');
     }
     res.send('error pushing');
+});
+
+app.get('/tokenVerify', (req, res) => {
+    const jwtUID = req.cookies.session;
+    try {
+        const uid = jwt.verify(jwtUID, jwtSig).uid;
+        if(localDB.users[`${uid}`]) {
+            res.send('valid');
+        }
+    } catch(err) {
+        res.send(`na`);
+    }
 });

@@ -1,4 +1,32 @@
-a.navbar-brand {
-  padding: 2%;
-  font-size: 200%;
+body {
+    user-select: none;
+}
+
+.container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+h2 {
+    padding: 2%;
+}
+
+.form-group {
+    padding: 1%;
+}
+
+.dark-mode {
+    filter: invert(100%)
+}
+
+::placeholder {
+    color: red;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: red;
+}
+  
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: red;
 }
