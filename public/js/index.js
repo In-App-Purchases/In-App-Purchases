@@ -72,7 +72,7 @@ const register = () => {
       $('#emailAlert').html('email invalid - already in use');
     } else {
       document.cookie = `session=${res}`;
-      window.location.href='/crypto';
+      window.location.href='/';
     }
   });
 };
