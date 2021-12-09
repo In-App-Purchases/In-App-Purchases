@@ -8,7 +8,6 @@ jQuery(() => {
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
     let speedUp = [2,10,50,100,200,1,2,5,7,10];
-    let timer = 60;
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
     let rate = 0;
@@ -69,13 +68,6 @@ jQuery(() => {
 
     setInterval(function(){
         var chance =  Math.floor(Math.random() * 10);
-        $("#time-remaining").text(`Time Remaining: ${timer}`);
-        timer--;
-        if(timer == 0){
-            alert("game over");
-            //submit score here
-            window.location.href = '/leaderboard';
-        }
         if(eventOn == true){
             $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
             eventCountdown--;
