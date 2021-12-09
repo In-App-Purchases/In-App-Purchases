@@ -37,21 +37,34 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'private/pages/index.html'));
-});
-
-app.get('/crypto', function(req, res) {
     const jwtUID = req.cookies.session;
     try {
         const uid = jwt.verify(jwtUID, jwtSig).uid;
-        if(localDB.users[`${uid}`]) {
+        if(localDB.users[`${uid}`] && localDB.users[`${uid}`].coin) {
             res.sendFile(path.join(__dirname, 'private/pages/crypto.html'));
+        } else if(localDB.users[`${uid}`]) {
+            res.sendFile(path.join(__dirname, 'private/pages/selector.html'));
+        } else {
+            res.sendFile(path.join(__dirname, 'private/pages/index.html'));
         }
     } catch(err) {
-        res.send(`<body><div class="container"><h1 style="font-family: consolas; color: red; margin-top: 15%; text-align: center;">
+        res.sendFile(path.join(__dirname, 'private/pages/index.html'));
+        /*res.send(`<body><div class="container"><h1 style="font-family: consolas; color: red; margin-top: 15%; text-align: center;">
                     Error: Could not authenticate user<br>Please sign in <a href='/'>here</a>
-                    </h1></div></body>`);
+                    </h1></div></body>`);*/
     }
+});
+
+app.get('/tools', (req, res) => {
+    res.sendFile(path.join(__dirname, 'private/pages/tools.html'));
+});
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, 'private/pages/about.html'));
+});
+
+app.get('/leaderboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'private/pages/leaderboard.html'));
 });
 
 app.listen(port, () => {console.log(`listening at http://localhost:${port}`);});
@@ -104,6 +117,15 @@ app.get('/login/:email/:password', (req, res) => {
     });
 });
 
+app.post('/api/selection/:coin', (req, res) => {
+    const coin = req.params.coin;
+    const sess = req.cookies.session;
+    const uid = getUID(sess);
+    if(localDB.users[`${uid}`]) {
+        update(child(users, uid), {'coin': coin});
+    } res.send('coin selected');
+});
+
 app.post('/api/savedata', (req, res) => {
     const saveData = req.body.saveData;
     if(typeof saveData === JSON) {
@@ -124,3 +146,14 @@ app.get('/tokenVerify', (req, res) => {
         res.send(`na`);
     }
 });
+
+app.get('/coin', (req, res) => {
+    const uid = getUID(req.cookies.session);
+    try {
+        res.send(localDB.users[`${uid}`].coin || 'shiba');
+    } catch (err) { res.send('shiba'); }
+});
+
+const getUID = (j) => {
+    return jwt.verify(j, jwtSig).uid;
+}

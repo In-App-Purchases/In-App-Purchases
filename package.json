@@ -3,7 +3,7 @@
     "@types/jquery": "^3.5.8",
     "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
-    "firebase": "^9.5.0",
+    "firebase": "^9.6.0",
     "jsonwebtoken": "^8.5.1"
   },
   "type": "module"

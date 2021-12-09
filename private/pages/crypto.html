@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
@@ -14,18 +13,16 @@
 
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">Crypto Clicker</a>
+        <a class="navbar-brand" href="/">Crypto<strong>Clicker</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                
                 <li class="nav-item">
-                    <a class="nav-link" href="/crypto.html" id="clickerLink">Clicker</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/pages/leaderboard.html" id="leaderboardLink">Leaderboard</a>
+                    <a class="nav-link" href="/leaderboard" id="leaderboardLink">Leaderboard</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -48,10 +45,11 @@
     <div style="text-align: center;" class="container navbar-light bg-light" id="landing">
         <div class="row">
             <div class="col col-md-6" id="click">
-                <button class="btn btn-light" style="margin-top: 15%;"><img src="/img/noun_coin_4020418.svg"
-                        alt="coin" id="coinIcon" width="400" height="400"></button>
+                <button class="btn btn-light" style="margin-top: 15%;"><img id="coinImg" alt="coin" id="coinIcon" width="400" height="400"></button>
             </div>
             <div class="col col-md-6">
+                <span style="font-size:300%; font-family: impact;" id="time-remaining">60</span>
+                <br>
                 <span style="font-size:300%; font-family: impact;" id="counter">0</span>
                 <br>
                 <span style="font-size:100%; font-family: impact;" id="banner"></span>
