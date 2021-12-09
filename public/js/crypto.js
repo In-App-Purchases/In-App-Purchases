@@ -1,6 +1,6 @@
 let a = 0;
 
-$('document').ready(() => {
+jQuery(() => {
     
     $.get('/coin', (res) => {
         $('#coinImg').attr('src',`/img/${res}.png`);
@@ -16,7 +16,7 @@ $('document').ready(() => {
     var eventOn = false;
     var eventCountdown = 0;
     var eventID = 0;
-    let saveData = {uid: localStorage['uid'], manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+    let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
     let events = {};
 
     $("#coinImg").click(function(){
