@@ -1,19 +1,23 @@
 let a = 0;
+
 $('document').ready(() => {
+    
     $.get('/coin', (res) => {
         $('#coinImg').attr('src',`/img/${res}.png`);
     });
 
     let costs = [10,100,200,400, 1000,100,200,400,800,1200];
     let speedUp = [2,10,50,100,200,1,2,5,7,10];
-
+    let timer = 60;
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
     let rate = 0;
     let randomUp = 0;
     var eventOn = false;
     var eventCountdown = 0;
+    var eventID = 0;
     let saveData = {uid: localStorage['uid'], manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+    let events = {};
 
     $("#coinImg").click(function(){
         playAudio2('coin_click')
@@ -31,7 +35,7 @@ $('document').ready(() => {
         if(count >= costs[upNum]){
             count = count - costs[upNum];
             delta = delta + speedUp[upNum];
-            costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            costs[upNum] = Math.ceil(costs[upNum] * 1.5);
             $("#banner").text('');
         }
         else{
@@ -49,7 +53,7 @@ $('document').ready(() => {
         if(count >= costs[upNum]){
             count = count - costs[upNum];
             rate = rate + speedUp[upNum];
-            costs[upNum] = Math.ceil(costs[upNum] * 1.03);
+            costs[upNum] = Math.ceil(costs[upNum] * 1.5);
             $("#banner").text('');
         }
         else{
@@ -65,24 +69,44 @@ $('document').ready(() => {
 
 
 
-    setInterval(function(){
-        count = count + rate;
-        $("#counter").text(`coins: ${count}`);
-    },500);
 
     setInterval(function(){
         var chance =  Math.floor(Math.random() * 10);
+        $("#time-remaining").text(`Time Remaining: ${timer}`);
+        timer--;
+        if(timer == 0){
+            alert("game over");
+            //submit score here
+            window.location.href = '/leaderboard';
+        }
         if(eventOn == true){
             $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
             eventCountdown--;
             if(eventCountdown == 0){
-                eventOn = false; 
+                eventOn = false;
+                eventID = 0;
             }
+            switch(eventID){
+                case 0:
+                    count = count + (rate *  2);
+                    console.log("influencer");
+                    $("#eventSign").text(`Influencer event(Growth Rate x2) Time Remaining: ${eventCountdown}`);
+                    break;
+                case 1:
+                    count = count + Math.floor(rate /  2);
+                    console.log("crash");
+                    $("#eventSign").text(`Market crash(Growth Rate x0.5) Time Remaining: ${eventCountdown}`);
+                    break;
+            }
+            
+            $("#counter").text(`coins: ${count}`);
         }
         else{
             $("#eventSign").text('');
             if(chance == 9 || randomUp >= 9){
                 randomUp = 0;
+                eventID =  Math.floor(Math.random() * 2);
+                console.log(eventID);
                 eventOn = true;
                 eventCountdown = 10;
                 console.log("event happens");
@@ -90,7 +114,11 @@ $('document').ready(() => {
             else{
                 console.log("no event");
             }
+            count = count + rate;
+            $("#counter").text(`coins: ${count}`);
         }
+        
+
         
     }, 1000);
 
