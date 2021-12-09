@@ -67,9 +67,6 @@ jQuery(() => {
         $(upLoc).text(costs[upNum]);
     }
 
-
-
-
     setInterval(function(){
         var chance =  Math.floor(Math.random() * 10);
         $("#time-remaining").text(`Time Remaining: ${timer}`);
@@ -117,8 +114,6 @@ jQuery(() => {
             count = count + rate;
             $("#counter").text(`coins: ${count}`);
         }
-        
-
         
     }, 1000);
 

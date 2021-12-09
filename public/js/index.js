@@ -31,7 +31,7 @@ $('document').ready(() => {
     $('#passAlert').html('');
     (signInMode) ? signIn() : register();
   });
-
+  
 });
 
 const signIn = () => {
