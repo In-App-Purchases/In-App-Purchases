@@ -1,5 +1,164 @@
 body {
     user-select: none;
+    background-color: #99E1D9;
+}
+.container {
+    margin-top: 1%;
+    background-color: gray;
+    text-align: center;
+}
+h2 {
+    padding: 2%;
+    color: #FCFCFC;
+}
+.landing {
+    display: none;
+}
+.form-group {
+    padding: 1%;
+    color:#FCFCFC;
+}
+input#inputEmail.form-control {
+  background-color: #FCFCFC;
+}
+.dark-mode {
+    filter: invert(100%);
+}
+.bg-nav {
+  background-color: #5D576B;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #FCFCFC;
+}
+div#landing.container.navbar-light.bg-light{
+  background-color: #F7567C;
+}
+.nav-item:hover{
+  background-color: #F7567C;
+}
+.dropdown-menu.show {
+  background-color: #F7567C;
+}
+a.dropdown-item:hover {
+  background-color: #99E1D9;
+}
+div#landing.container.navbar-light.bg-landing{
+  background-color: #F7567C;
+}
+button#submitLogin.btn.btn-light{
+  color: #5D576B;
+  background-color: #FFFAE3;
+}
+button#submitLogin.btn.btn-light:hover{
+  color: #5D576B;
+  background-color: #FFF8D6;
+}
+button#signInLink.btn.btn-light{
+  color: #5D576B;
+  background-color: #FFFAE3;
+}
+button#signInLink.btn.btn-light:hover{
+  color: #5D576B;
+  background-color: #FFF8D6;
+}
+button#cryptoAltButton.btn.btn-primary.btn-lg{
+  color: #5D576B;
+  background-color: #FFFAE3;
+}
+button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
+  color: #5D576B;
+  background-color: #FFF8D6;
+}
+input#inputEmail1.form-control{
+  background-color: #FCFCFC;
+}
+input#inputPassword1.form-control{
+  background-color: #FCFCFC;
+}
+input#inputPassword2.form-control{
+  background-color: #FCFCFC;
+}
+button#themeswitch.btn.btn-light.btn-toggle{
+  background-color: ;
+  color: ;
+}
+/*--------------------------dark mode below-------------------------------------*/
+body.dark-theme {
+    user-select: none;
+    background-color: #4F5D75; /*dark blue*/
+}
+body.dark-theme h2 {
+    padding: 2%;
+    color: #BFC0C0;
+}
+body.dark-theme .form-group {
+    padding: 1%;
+    color:#BFC0C0;/*grey*/
+}
+body.dark-theme .bg-nav {
+  background-color:#2D3142;/*darker blue*/
+}
+body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #BFC0C0; /*grey*/
+}
+body.dark-theme div#landing.container.navbar-light.bg-light{
+  background-color: #403D39;/*dark grey*/
+}
+body.dark-theme .nav-item:hover{
+  background-color: #403D39;
+}
+body.dark-theme .dropdown-menu.show {
+  background-color: #403D39;
+}
+body.dark-theme a.dropdown-item:hover {
+  background-color: #4F5D75;
+}
+body.dark-theme div#landing.container.navbar-light.bg-landing{
+  background-color: #403D39;
+}
+body.dark-theme button#submitLogin.btn.btn-light{
+  color: #2D3142;
+  background-color: #EF8354;
+}
+body.dark-theme button#submitLogin.btn.btn-light:hover{
+  color: #2D3142;
+  background-color: #EB6A33;
+}
+body.dark-theme button#signInLink.btn.btn-light{
+  color: #2D3142;
+  background-color: #EF8354;
+}
+body.dark-theme button#signInLink.btn.btn-light:hover{
+  color: #2D3142;
+  background-color: #EB6A33;
+}
+body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg{
+  color: #2D3142;
+  background-color: #EF8354;
+}
+body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
+  color: #2D3142;
+  background-color: #EB6A33;
+}
+body.dark-theme input#inputEmail1.form-control{
+  background-color: #BFC0C0;
+}
+body.dark-theme input#inputPassword1.form-control{
+  background-color: #BFC0C0;
+}
+body.dark-theme input#inputPassword2.form-control{
+  background-color: #BFC0C0;
+}
+body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
+  background-color:#BFC0C0 ;/**/
+  color:#2D3142 ;
+}
+body.dark-theme input#inputEmail.form-control {
+  background-color: #BFC0C0;
+}
+
+/*body {
+    user-select: none;
 }
 
 .container {
@@ -26,7 +185,7 @@ h2 {
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: red;
 }
-  
+
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: red;
-}
+}*/

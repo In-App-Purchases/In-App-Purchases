@@ -1,21 +1,173 @@
 body {
     user-select: none;
+    background-color: #99E1D9;
 }
-
-.container {
-    margin-top: 1%;
-    background-color: gray;
-    text-align: center;
-}
-
 h2 {
     padding: 2%;
+    color:#FCFCFC;
 }
-
 .landing {
     display: none;
 }
-
 .dark-mode {
-    filter: invert(100%)
+    filter: invert(100%);
+}
+.mySlides {
+  display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+  max-width: 600px;
+}
+.bg-nav {
+  background-color: #5D576B;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #FCFCFC;
+}
+.nav-item:hover{
+  background-color: #F7567C;
+}
+.dropdown-menu.show {
+  background-color: #F7567C;
+}
+a.dropdown-item:hover {
+  background-color: #99E1D9;
+  color: #5D576B;
+}
+div#landing.container.navbar-light.bg-landing{
+  background-color: #F7567C;
+}
+a#nitin.list-group-item.list-group-item-action{
+  background-color: #FFFAE3;
+  margin-top:2%;
+  color:#5D576B;
+}
+a#noah.list-group-item.list-group-item-action{
+  background-color: #FFFAE3;
+  margin-top:2%;
+  color:#5D576B;
+}
+a#parth.list-group-item.list-group-item-action{
+  background-color: #FFFAE3;
+  margin-top:2%;
+  color:#5D576B;
+}
+a#jake.list-group-item.list-group-item-action{
+  background-color: #FFFAE3;
+  margin-top:2%;
+  color:#5D576B;
+}
+a#justin.list-group-item.list-group-item-action{
+  background-color: #FFFAE3;
+  margin-top:2%;
+  color:#5D576B;
+}
+a#nitin.list-group-item.list-group-item-action:hover{
+  background-color: #FFF8D6;
+}
+a#noah.list-group-item.list-group-item-action:hover{
+  background-color: #FFF8D6;
+}
+a#parth.list-group-item.list-group-item-action:hover{
+  background-color: #FFF8D6;
+}
+a#jake.list-group-item.list-group-item-action:hover{
+  background-color: #FFF8D6;
+}
+a#justin.list-group-item.list-group-item-action:hover{
+  background-color: #FFF8D6;
+}
+div.list-group a{
+  background-color: #FFFAE3;
+  color: #5D576B;
+}
+div.list-group a:hover{
+  background-color: #FFF8D6;
+  color: #5D576B;
+}
+div.col h1,div.col p{
+    color: #FCFCFC;
+}
+/*--------------------------dark mode below-------------------------------------*/
+body.dark-theme {
+    user-select: none;
+    background-color: #4F5D75;
+}
+body.dark-theme .bg-nav {
+  background-color: #2D3142;
+}
+body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #BFC0C0;
+}
+body.dark-theme .nav-item:hover{
+  background-color: #403D39;
+}
+body.dark-theme .dropdown-menu.show {
+  background-color: #403D39;
+}
+body.dark-theme a.dropdown-item:hover {
+  background-color: #4F5D75;
+  color: #5D576B;
+}
+body.dark-theme div#landing.container.navbar-light.bg-landing{
+  background-color: #403D39;
+}
+body.dark-theme a#nitin.list-group-item.list-group-item-action{
+  background-color: #EF8354;
+  margin-top:2%;
+  color:#2D3142;
+}
+body.dark-theme a#noah.list-group-item.list-group-item-action{
+  background-color: #EF8354;
+  margin-top:2%;
+  color:#2D3142;
+}
+body.dark-theme a#parth.list-group-item.list-group-item-action{
+  background-color: #EF8354;
+  margin-top:2%;
+  color:#2D3142;
+}
+body.dark-theme a#jake.list-group-item.list-group-item-action{
+  background-color: #EF8354;
+  margin-top:2%;
+  color:#2D3142;
+}
+body.dark-theme a#justin.list-group-item.list-group-item-action{
+  background-color: #EF8354;
+  margin-top:2%;
+  color:#2D3142;
+}
+body.dark-theme a#nitin.list-group-item.list-group-item-action:hover{
+  background-color: #EB6A33;
+}
+body.dark-theme a#noah.list-group-item.list-group-item-action:hover{
+  background-color: #EB6A33;
+}
+body.dark-theme a#parth.list-group-item.list-group-item-action:hover{
+  background-color: #EB6A33;
+}
+body.dark-theme a#jake.list-group-item.list-group-item-action:hover{
+  background-color: #EB6A33;
+}
+body.dark-theme a#justin.list-group-item.list-group-item-action:hover{
+  background-color: #EB6A33;
+}
+body.dark-theme div.list-group a{
+  background-color: #EF8354;
+  color: #403D39;
+}
+body.dark-theme div.list-group a:hover{
+  background-color: #EB6A33;
+  color: #5D576B;
+}
+body.dark-theme div.col h1,body.dark-theme div.col p{
+    color: #BFC0C0;
+}
+body.dark-theme a#navbarDropdown.nav-link.dropdown-toggle {
+  color: #BFC0C0;
+}
+body.dark-theme h2 {
+    padding: 2%;
+    color:#BFC0C0;
 }
