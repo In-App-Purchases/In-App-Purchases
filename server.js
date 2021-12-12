@@ -40,7 +40,7 @@ app.get('/', function(req, res) {
     const jwtUID = req.cookies.session;
     try {
         const uid = jwt.verify(jwtUID, jwtSig).uid;
-        if(localDB.users[`${uid}`] && localDB.users[`${uid}`].coin) {
+        if(localDB.users[`${uid}`] && localDB.users[`${uid}`].coin && localDB.users[`${uid}`].coin != 'NULL') {
             res.sendFile(path.join(__dirname, 'private/pages/crypto.html'));
         } else if(localDB.users[`${uid}`]) {
             res.sendFile(path.join(__dirname, 'private/pages/selector.html'));
@@ -150,10 +150,16 @@ app.get('/tokenVerify', (req, res) => {
 app.get('/coin', (req, res) => {
     const uid = getUID(req.cookies.session);
     try {
-        res.send(localDB.users[`${uid}`].coin || 'shiba');
-    } catch (err) { res.send('shiba'); }
+        res.send(localDB.users[`${uid}`].coin);
+    } catch (err) { }
+});
+
+app.post('/newCoin', (req, res) => {
+  const uid = getUID(req.cookies.session);
+  update(child(users, uid), {'coin': 'NULL'});
+  res.send('success');
 });
 
 const getUID = (j) => {
     return jwt.verify(j, jwtSig).uid;
-}
+};

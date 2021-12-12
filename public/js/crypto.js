@@ -1,7 +1,7 @@
 let a = 0;
 
 jQuery(() => {
-    
+
     $.get('/coin', (res) => {
         $('#coinImg').attr('src',`/img/${res}.png`);
     });
@@ -28,6 +28,12 @@ jQuery(() => {
     $('#signOutLink').on('click', () => {
       document.cookie = 'session=none';
       window.location.href = '/';
+    });
+
+    $('#changeCoinLink').on('click', () => {
+      $.post('/newCoin', (res) => {
+        window.location.href = '/';
+      });
     });
 
     const purchaseUpgrade = (upNum) => {
@@ -87,7 +93,7 @@ jQuery(() => {
                     $("#eventSign").text(`Market crash(Growth Rate x0.5) Time Remaining: ${eventCountdown}`);
                     break;
             }
-            
+
             $("#counter").text(`coins: ${count}`);
         }
         else{
@@ -106,7 +112,7 @@ jQuery(() => {
             count = count + rate;
             $("#counter").text(`coins: ${count}`);
         }
-        
+
     }, 1000);
 
     $("#upgrade1").click(function(){
@@ -187,4 +193,3 @@ function playAudio2(id){
     var x = document.getElementById(id);
     x.play();
 }
-
