@@ -126,13 +126,26 @@ app.post('/api/selection/:coin', (req, res) => {
     } res.send('coin selected');
 });
 
-app.post('/api/savedata', (req, res) => {
-    const saveData = req.body.saveData;
-    if(typeof saveData === JSON) {
-        console.log(saveData);
-        res.send('pushed');
-    }
-    res.send('error pushing');
+app.post('/save/:count/:delta', (req, res) => {
+  try{
+    const uid = getUID(req.cookies.session);
+    const count = req.params.count;
+    const delta = req.params.delta;
+    update(child(users, uid), {'count': count, 'delta': delta});
+    res.send('success');
+  } catch (err) { res.send(err); }
+});
+
+app.get('/load', (req, res) => {
+  try {
+    const uid = getUID(req.cookies.session);
+    const count = localDB.users[`${uid}`].count || 0;
+    const delta = localDB.users[`${uid}`].delta || 1;
+    res.json({
+      'count': count,
+      'delta': delta
+    });
+  } catch (err) { res.send(err); }
 });
 
 app.get('/tokenVerify', (req, res) => {
@@ -151,7 +164,7 @@ app.get('/coin', (req, res) => {
     const uid = getUID(req.cookies.session);
     try {
         res.send(localDB.users[`${uid}`].coin);
-    } catch (err) { }
+    } catch (err) { res.send(err); }
 });
 
 app.post('/newCoin', (req, res) => {

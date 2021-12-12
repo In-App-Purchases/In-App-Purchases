@@ -97,7 +97,7 @@ jQuery(() => {
             $("#counter").text(`coins: ${count}`);
         }
         else{
-            $("#eventSign").text('');
+            $("#eventSign").text('No Current Events');
             if(chance == 9 || randomUp >= 9){
                 randomUp = 0;
                 eventID =  Math.floor(Math.random() * 2);
@@ -159,28 +159,40 @@ jQuery(() => {
 
 
     $("#saveButton").click(function(){
-        localStorage.setItem('Count', count);
-        localStorage.setItem('Delta', delta);
-        $.ajax({
-            contentType: 'application/json',
-            data: saveData,
-            dataType: 'json',
-            url: '/api/savedata',
-            type: post,
-            success: function(result){
-                console.log("Posted");
-                console.log(result);
-            },
-            error: function (result){
-                console.log(result)
-            }
-        })
+        // localStorage.setItem('Count', count);
+        // localStorage.setItem('Delta', delta);
+        // $.ajax({
+        //     contentType: 'application/json',
+        //     data: saveData,
+        //     dataType: 'json',
+        //     url: '/api/savedata',
+        //     type: post,
+        //     success: function(result){
+        //         console.log("Posted");
+        //         console.log(result);
+        //     },
+        //     error: function (result){
+        //         console.log(result)
+        //     }
+        // })
+        $.post(`/save/${count}/${delta}`, (res) => {
+
+        });
     });
 
     $("#loadButton").click(function(){
-        count = +(localStorage.getItem('Count'));
-        delta = +(localStorage.getItem('Delta'));
-        $("#counter").text(`coins: ${count}`);
+        // count = +(localStorage.getItem('Count'));
+        // delta = +(localStorage.getItem('Delta')) || 1;
+        // $("#counter").text(`coins: ${count}`);
+        $.get('/load', (res) => {
+          try {
+            count = parseInt(res.count);
+            delta = parseInt(res.delta);
+          } catch (err) {
+            count = 0;
+            delta = 1;
+          }
+        });
     });
 
 });
