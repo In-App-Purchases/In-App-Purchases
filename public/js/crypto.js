@@ -68,7 +68,14 @@ jQuery(() => {
     }
 
     setInterval(function(){
-        var chance =  Math.floor(Math.random() * 10);
+        console.log("SAVED GAME");
+        $.post(`/save/${count}/${delta}`, (res) => {
+
+        });
+    }, 30000);
+
+    setInterval(function(){
+        var chance =  Math.floor(Math.random() * 500);
         if(eventOn == true){
             $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
             eventCountdown--;
@@ -93,7 +100,7 @@ jQuery(() => {
         }
         else{
             $("#eventSign").text('No Current Events');
-            if(chance == 9 || randomUp >= 9){
+            if(chance == 9 || randomUp >= 1000){
                 randomUp = 0;
                 eventID =  Math.floor(Math.random() * 2);
                 console.log(eventID);
