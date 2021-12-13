@@ -59,9 +59,27 @@ let sketch = (p) => {
     moveImgs();
     makeImgs();
     offScreen();
+    drawParticles();
   };
+
+  var particles = [];
+  
+  var burstMin = 8;
+  var burstMax = 8;
+  
+  const drawParticles = () => { 
+    for (var i = particles.length - 1; i >= 0; i--) {
+      particles[i].update();
+      particles[i].draw();
+      
+      if (particles[i].rad < 0 || particles[i].a < 0) {
+        particles.splice(i, 1);
+      }
+    }
+  }
   
   p.mouseClicked = function() {
+    particleHandleMouse();
     checkCollision();
   }
   
@@ -102,6 +120,48 @@ let sketch = (p) => {
       }
     }
   };
+
+  const particleHandleMouse = () => {
+    var count = Math.floor(Math.random()*24+8);
+    for (var i = 0; i < count; i++) {
+      var pos = new p5.Vector(p.mouseX, p.mouseY);
+      var vel = new p5.Vector(Math.random()*10-5, Math.random()*10-5);
+      var par = new Particle(pos, vel);
+      particles.push(par);
+    }
+  }
+
+  function Particle(pos, vel) {
+    this.pos = pos;
+    this.vel = vel;
+		this.acc = new p5.Vector(0, 0.3);
+		this.maxLife = 50;
+    this.life = this.maxLife;
+		this.rad = Math.random()*4+6;
+		this.a = Math.random()*155+100;
+		this.r = Math.random()*155+100;
+		this.g = Math.random()*155+100;
+		this.b = Math.random()*155+100;
+}
+
+Particle.prototype.update = function() {
+    this.life--;
+    
+    this.pos.add(this.vel);
+		this.vel.add(this.acc);
+	
+		if (p.frameCount % 5 === 0) { this.rad--; this.a--; }
+		
+}
+
+Particle.prototype.draw = function() {
+    p.push();
+    p.noStroke();
+    p.fill(100, 255, 0);
+    p.ellipse(this.pos.x, this.pos.y, this.rad*2, this.rad*2);
+    p.pop();
+}
+
 
 };
 
