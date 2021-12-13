@@ -107,7 +107,6 @@ app.get('/login/:email/:password', (req, res) => {
     const password = req.params.password;
     signInWithEmailAndPassword(auth, email, password)
     .then((result) => {
-        update(child(users, uid), {'email': email, 'password': password});
         const uid = result['_tokenResponse']['localId'];
         const j = jwt.sign({'uid': uid}, jwtSig);
         res.send(j);
