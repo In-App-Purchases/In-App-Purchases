@@ -154,6 +154,12 @@ body.dark-theme button.btn.btn-link{
 body.dark-theme nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
   color: #BFC0C0;
 }
+hr {
+  height: 3px;
+}
+p.lg-text {
+  font-size: 110%;
+}
 
 /*body {
     margin: 0%;

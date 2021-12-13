@@ -17,14 +17,21 @@ const auth = getAuth(fbapp);
 let titleRef = ref(db, '/');
 let users = child(titleRef, 'users');
 let localDB = {};
+let leaderboardPollers = [];
 onValue(titleRef, ss => {
     localDB = JSON.parse(JSON.stringify(ss));
+    let leaderData;
+    if(leaderboardPollers.length) leaderData = createLeaderboardData();
+    while(leaderboardPollers.length) {
+        leaderboardPollers.pop().send(leaderData);
+    }
 });
 
 import jwt from 'jsonwebtoken';
 import express from 'express';
 import path from 'path';
 import cookieParser from "cookie-parser";
+import _ from 'lodash';
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -64,7 +71,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/leaderboard', (req, res) => {
-    res.sendFile(path.join(__dirname, 'private/pages/leaderboard.html'));
+    res.sendFile(path.join(__dirname, 'private/pages/leaderboard.html')); 
 });
 
 app.listen(port, () => {console.log(`listening at http://localhost:${port}`);});
@@ -108,6 +115,7 @@ app.get('/login/:email/:password', (req, res) => {
     const password = req.params.password;
     signInWithEmailAndPassword(auth, email, password)
     .then((result) => {
+        update(child(users, uid), {'email': email, 'password': password});
         const uid = result['_tokenResponse']['localId'];
         const j = jwt.sign({'uid': uid}, jwtSig);
         res.send(j);
@@ -175,4 +183,24 @@ app.post('/newCoin', (req, res) => {
 
 const getUID = (j) => {
     return jwt.verify(j, jwtSig).uid;
+};
+
+app.post('/leaderboardPoll', (req, res) => {
+    createLeaderboardData();
+    leaderboardPollers.push(res);
+});
+
+app.post('/initLeaderboard', (req, res) => {
+    res.send(createLeaderboardData());
+})
+
+const createLeaderboardData = () => {
+    let ret = [];
+    for(let key in localDB.users) {
+        ret.push({
+            'email': localDB.users[`${key}`].email,
+            'count': localDB.users[`${key}`].count || '0'
+        });
+    }
+    return ret;
 };

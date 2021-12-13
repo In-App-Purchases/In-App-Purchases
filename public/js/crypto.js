@@ -229,7 +229,7 @@ jQuery(() => {
         $.post(`/save/${count}/${delta}`, (res) => {
 
         });
-    }, 30000);
+    }, 8000);
 
     setInterval(function(){
         var chance =  Math.floor(Math.random() * 500);
