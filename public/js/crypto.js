@@ -15,9 +15,10 @@ let events = {};
 let sketch = (p) => {
     
     let coinSelection;
-
+    let img;
     $.get('/coin', (res) => {
         coinSelection = res;
+        img = p.loadImage(`/img/${coinSelection}.png`);
     });
 
   let imgs = [];
@@ -91,9 +92,7 @@ let sketch = (p) => {
   
   const makeImgs = () => {
     if(Math.random()*1000 < 30)
-    p.loadImage(`/img/${coinSelection}.png`, res => {
-      imgs.push(new Img(res, sizeX, sizeY));
-    });
+    imgs.push(new Img(img, sizeX, sizeY));
   };
   
   const checkCollision = () => {
@@ -158,7 +157,7 @@ Particle.prototype.draw = function() {
     p.push();
     p.noStroke();
     p.fill(100, 255, 0);
-    p.ellipse(this.pos.x, this.pos.y, this.rad*2, this.rad*2);
+    p.image(img, this.pos.x, this.pos.y, this.rad*4, this.rad*4);
     p.pop();
 }
 
