@@ -24,7 +24,18 @@ let sketch = (p) => {
   const sizeY = 75;
   const screenX = 400;
   const screenY = 400;
-  let backgroundColors = [120, 120, 120];
+
+  let backgroundColors = [247, 86, 124];
+  let dark = true;
+
+  const btn = document.querySelector(".btn-toggle");
+  $('.btn-toggle').on('click', () => {
+    backgroundColors = dark ? [93, 87, 107] : [247,86,124];
+    dark = !dark;
+  })
+
+  btn.addEventListener("click", function () {
+  });
   
   class Img {
     constructor(img, xSize, ySize) {
@@ -38,11 +49,11 @@ let sketch = (p) => {
   
   p.setup = function() {
     p.createCanvas(screenX, screenY);
-    p.background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
+    p.background(backgroundColors[0] + 10, backgroundColors[1] + 10, backgroundColors[2] + 10);
   };
   
   p.draw = function() { 
-    p.background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
+    p.background(backgroundColors[0] + 10, backgroundColors[1] + 10, backgroundColors[2] + 10);
     for(let img in imgs) {
       if(imgs[img])
       p.image(imgs[img].img, imgs[img].xPos, imgs[img].yPos, imgs[img].xSize, imgs[img].ySize);
@@ -54,7 +65,7 @@ let sketch = (p) => {
   
   p.mouseClicked = function() {
     checkCollision();
-  }
+  };
   
   const moveImgs = () => {
     for(let img in imgs) {
