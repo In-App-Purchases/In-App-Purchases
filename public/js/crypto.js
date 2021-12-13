@@ -123,6 +123,10 @@ jQuery(() => {
     });
 
     const purchaseUpgrade = (upNum) => {
+      var upSave = "up" + (upNum  + 1).toString();
+        if(saveData.manual[upSave] >= 10){
+          document.getElementById('upgrade' + (upNum + 1).toString()).hidden = true;
+        }
         if(count >= costs[upNum]){
             count = count - costs[upNum];
             delta = delta + speedUp[upNum];
