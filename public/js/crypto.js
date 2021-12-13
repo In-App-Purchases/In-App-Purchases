@@ -253,7 +253,7 @@ let sketch = (p) => {
     offScreen();
   };
   
-  p.draw = function() {
+  p.mouseClicked = function() {
     checkCollision();
   }
   
@@ -265,7 +265,7 @@ let sketch = (p) => {
   
   const makeImgs = () => {
     if(Math.random()*1000 < 30)
-    p.loadImage(`/img/shiba.png`, res => {
+    p.loadImage(`/img/dream.png`, res => {
       imgs.push(new Img(res, sizeX, sizeY));
     });
   };
