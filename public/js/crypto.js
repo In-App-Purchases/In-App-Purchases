@@ -8,6 +8,7 @@ let rate = 0;
 let randomUp = 0;
 var eventOn = false;
 var eventCountdown = 0;
+let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 var eventID = 0;
 let events = {};
 
@@ -24,18 +25,6 @@ let sketch = (p) => {
   const sizeY = 75;
   const screenX = 400;
   const screenY = 400;
-
-  let backgroundColors = [247, 86, 124];
-  let dark = true;
-
-  const btn = document.querySelector(".btn-toggle");
-  $('.btn-toggle').on('click', () => {
-    backgroundColors = dark ? [93, 87, 107] : [247,86,124];
-    dark = !dark;
-  })
-
-  btn.addEventListener("click", function () {
-  });
   
   class Img {
     constructor(img, xSize, ySize) {
@@ -46,6 +35,15 @@ let sketch = (p) => {
       this.xPos = Math.random()*(400 - xSize);
     }
   }
+
+  let backgroundColors = [247, 86, 124];
+  let dark = true;
+
+  const btn = document.querySelector(".btn-toggle");
+  $('.btn-toggle').on('click', () => {
+    backgroundColors = dark ? [93, 87, 107] : [247,86,124];
+    dark = !dark;
+  })
   
   p.setup = function() {
     p.createCanvas(screenX, screenY);
@@ -65,7 +63,7 @@ let sketch = (p) => {
   
   p.mouseClicked = function() {
     checkCollision();
-  };
+  }
   
   const moveImgs = () => {
     for(let img in imgs) {
@@ -125,6 +123,10 @@ jQuery(() => {
     });
 
     const purchaseUpgrade = (upNum) => {
+      var upSave = "up" + (upNum  + 1).toString();
+        if(saveData.manual[upSave] >= 10){
+          document.getElementById('upgrade' + (upNum + 1).toString()).hidden = true;
+        }
         if(count >= costs[upNum]){
             count = count - costs[upNum];
             delta = delta + speedUp[upNum];
@@ -137,10 +139,15 @@ jQuery(() => {
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
         var upSave = "up" + (upNum + 1).toString();
+        saveData.manual[upSave] = saveData.manual[upSave] + 1;
         $(upLoc).text(costs[upNum]);
     }
 
     const purchaseSpeed = (upNum) => {
+        var upSave = "up" + (upNum  - 4).toString();
+        if(saveData.auto[upSave] >= 10){
+          document.getElementById('speed' + (upNum  - 4).toString()).hidden = true;
+        }
         if(count >= costs[upNum]){
             count = count - costs[upNum];
             rate = rate + speedUp[upNum];
@@ -152,10 +159,12 @@ jQuery(() => {
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
-        var upSave = "up" + (upNum  - 4).toString();
+        
+        saveData.auto[upSave] = saveData.auto[upSave] + 1;
         $(upLoc).text(costs[upNum]);
     }
 
+    //auto save timer
     setInterval(function(){
         console.log("SAVED GAME");
         $.post(`/save/${count}/${delta}`, (res) => {

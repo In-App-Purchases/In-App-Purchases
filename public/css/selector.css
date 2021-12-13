@@ -25,9 +25,10 @@ h5{
   color: #FCFCFC;
 }
 p {
-    color: #FFFFFF;
+  color: #FCFCFC;
 }
 .card-text p {
+  color: #FCFCFC;
 
 }
 /*--------------------------dark mode below-------------------------------------*/
@@ -52,8 +53,17 @@ body.dark-theme a.dropdown-item:hover {
   color: #5D576B;
 }
 body.dark-theme div.card {
-  background-color: #EF8354;
+  background-color: #403D39;
 }
 body.dark-theme p{
     color: #2D3142;
+}
+body.dark-theme h5{
+  color: #BFC0C0;
+}
+body.dark-theme p {
+  color: #BFC0C0;
+}
+body.dark-theme .card-text p {
+  color: #BFC0C0;
 }
