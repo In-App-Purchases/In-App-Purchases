@@ -152,6 +152,7 @@ jQuery(() => {
         $(upLoc).text(costs[upNum]);
     }
 
+    //auto save timer
     setInterval(function(){
         console.log("SAVED GAME");
         $.post(`/save/${count}/${delta}`, (res) => {
