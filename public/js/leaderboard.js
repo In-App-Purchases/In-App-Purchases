@@ -24,10 +24,10 @@ const renderUsers = (data) => {
     $('#leaderStats').append(`
     <hr />
     <div class="row">
-      <div class="col-1"></div>
+      <div class="col-2"></div>
       <div class="col-2"><strong><p class="lg-text">${parseInt(index)+1}</p></strong></div>
-      <div class="col-5"><strong><p class="lg-text"><a href="mailto:${data[index].email}" style="color: black; text-decoration: underline">${data[index].email}</a></p></strong></div>
-      <div class="col-3"><strong><p class="lg-text">${data[index].count}</p></strong></div>
+      <div class="col-4"><strong><p class="lg-text"><a href="mailto:${data[index].email}" style="color: aqua; text-decoration: underline">${data[index].email}</a></p></strong></div>
+      <div class="col-3"><strong><p class="lg-text" style="text-align: left">${data[index].count}</p></strong></div>
       <div class="col-1"></div>
     </div>
     <hr />
