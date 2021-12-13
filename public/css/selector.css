@@ -1,7 +1,53 @@
-.card {
-  cursor: pointer;
+body {
+    user-select: none;
+    background-color: #99E1D9;
 }
-
-.card:active {
-  background-color: antiquewhite;
+.bg-nav {
+  background-color: #5D576B;
+}
+nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #FCFCFC;
+}
+.nav-item:hover{
+  background-color: #F7567C;
+}
+.dropdown-menu.show {
+  background-color: #F7567C;
+}
+a.dropdown-item:hover {
+  background-color: #99E1D9;
+  color: #5D576B;
+}
+div.card {
+  background-color: #F7567C;
+}
+p {
+    color: #FFFFFF;
+}
+/*--------------------------dark mode below-------------------------------------*/
+body.dark-theme {
+    user-select: none;
+    background-color: #4F5D75;
+}
+body.dark-theme .bg-nav {
+  background-color: #2D3142;
+}
+body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #BFC0C0;
+}
+body.dark-theme .nav-item:hover{
+  background-color: #403D39;
+}
+body.dark-theme .dropdown-menu.show {
+  background-color: #403D39;
+}
+body.dark-theme a.dropdown-item:hover {
+  background-color: #4F5D75;
+  color: #5D576B;
+}
+body.dark-theme div.card {
+  background-color: #EF8354;
+}
+body.dark-theme p{
+    color: #2D3142;
 }
