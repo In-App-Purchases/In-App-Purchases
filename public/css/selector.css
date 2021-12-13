@@ -21,8 +21,14 @@ a.dropdown-item:hover {
 div.card {
   background-color: #F7567C;
 }
+h5{
+  color: #FCFCFC;
+}
 p {
     color: #FFFFFF;
+}
+.card-text p {
+
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
