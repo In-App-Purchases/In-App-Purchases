@@ -80,7 +80,6 @@ let sketch = (p) => {
   }
   
   p.mouseClicked = function() {
-    particleHandleMouse();
     checkCollision();
   }
   
@@ -101,6 +100,7 @@ let sketch = (p) => {
       img = imgs[index];
       if(isColliding(img.xPos, img.yPos)) {
         imgs.splice(index, 1);
+        particleHandleMouse();
         click();
       }
     }
