@@ -80,3 +80,5 @@ let sketch = (p) => {
   };
 
 };
+
+new p5(sketch, window.document.getElementById('clickDiv'));

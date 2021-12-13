@@ -1,8 +1,11 @@
 let a = 0;
 
 jQuery(() => {
+    
+    let coin;
 
     $.get('/coin', (res) => {
+        coin = res;
         $('#coinImg').attr('src',`/img/${res}.png`);
     });
 
@@ -208,9 +211,90 @@ function playAudio2(id){
     x.play();
 }
 
-export const click = () => {
+const click = () => {
     playAudio2('coin_click')
     count = count + delta;
     $("#counter").text(`coins: ${count}`);
     randomUp++;
 }
+
+let sketch = (p) => {
+
+  let imgs = [];
+  const sizeX = 75;
+  const sizeY = 75;
+  const screenX = 400;
+  const screenY = 400;
+  let backgroundColors = [120, 120, 120];
+  
+  class Img {
+    constructor(img, xSize, ySize) {
+      this.img = img;
+      this.xSize = xSize;
+      this.ySize = ySize;
+      this.yPos = -(ySize + 30);
+      this.xPos = Math.random()*(400 - xSize);
+    }
+  }
+  
+  p.setup = function() {
+    p.createCanvas(screenX, screenY);
+    p.background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
+  };
+  
+  p.draw = function() { 
+    p.background(backgroundColors[0], backgroundColors[1], backgroundColors[2]);
+    for(let img in imgs) {
+      if(imgs[img])
+      p.image(imgs[img].img, imgs[img].xPos, imgs[img].yPos, imgs[img].xSize, imgs[img].ySize);
+    }
+    moveImgs();
+    makeImgs();
+    offScreen();
+  };
+  
+  p.draw = function() {
+    checkCollision();
+  }
+  
+  const moveImgs = () => {
+    for(let img in imgs) {
+      imgs[img].yPos+=3;
+    }
+  };
+  
+  const makeImgs = () => {
+    if(Math.random()*1000 < 30)
+    p.loadImage(`/img/shiba.png`, res => {
+      imgs.push(new Img(res, sizeX, sizeY));
+    });
+  };
+  
+  const checkCollision = () => {
+    let img;
+    for(let index in imgs) {
+      img = imgs[index];
+      if(isColliding(img.xPos, img.yPos)) {
+        imgs.splice(index, 1);
+        click();
+      }
+    }
+  };
+  
+  const isColliding = (xPos, yPos) => {
+    return (p.mouseX <= xPos + sizeX && p.mouseX >= xPos && p.mouseY <= yPos + sizeY && p.mouseY >= yPos);
+  };
+  
+  const offScreen = () => {
+    const imgLen = imgs.length;
+    for(let i = imgLen-1; i >= 0; i--) {
+      if(imgs[i].yPos>screenY) {
+        imgs = imgs.slice(i);
+        return;
+      }
+    }
+  };
+
+};
+
+new p5(sketch, window.document.getElementById('clickDiv'));
