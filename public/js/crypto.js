@@ -6,7 +6,7 @@ jQuery(() => {
         $('#coinImg').attr('src',`/img/${res}.png`);
     });
 
-    let costs = [10,100,200,400, 1000,100,200,400,800,1200];
+    let costs = [10,100,200,400,1000,100,200,400,800,1200];
     let speedUp = [2,10,50,100,200,1,2,5,7,10];
     let count = +($("#counter").text()); // initial count value
     let delta = 1; // initial change in count per click
@@ -18,12 +18,7 @@ jQuery(() => {
     let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
     let events = {};
 
-    $("#coinImg").click(function(){
-        playAudio2('coin_click')
-        count = count + delta;
-        $("#counter").text(`coins: ${count}`);
-        randomUp++;
-    });
+    $("#coinImg").on('click', click);
 
     $('#signOutLink').on('click', () => {
       document.cookie = 'session=none';
@@ -204,4 +199,11 @@ function playAudio(url){ //deprecated
 function playAudio2(id){
     var x = document.getElementById(id);
     x.play();
+}
+
+export const click = () => {
+    playAudio2('coin_click')
+    count = count + delta;
+    $("#counter").text(`coins: ${count}`);
+    randomUp++;
 }
