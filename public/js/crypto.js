@@ -15,6 +15,7 @@ let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2:
 let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 var eventID = 0;
 let events = {};
+let userCoin;
 
 let sketch = (p) => {
     
@@ -328,10 +329,10 @@ jQuery(() => {
                 console.log(eventID);
                 eventOn = true;
                 eventCountdown = 10;
-                console.log("event happens");
+               // console.log("event happens");
             }
             else{
-                console.log("no event");
+                //console.log("no event");
             }
             count = count + (rate * prestige);
             $("#counter").text(`coins: ${count}`);
@@ -447,7 +448,20 @@ function playAudio2(id){
 }
 
 const click = () => {
-    playAudio2('coin_click')
+    let randInt;
+    $.get('/coin', (res) => {
+        userCoin =res;
+    });
+    randInt = Math.floor(Math.random()*3)+1;
+    if(userCoin=='shiba'){
+        playAudio2("inu"+randInt.toString())
+
+    }else if(userCoin=='dream'){
+        playAudio2("dream"+randInt)
+    }else{
+        playAudio2("mauri"+randInt)
+    }
+
     count = count + delta;
     $("#counter").text(`coins: ${count}`);
     randomUp++;

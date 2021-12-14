@@ -11,6 +11,21 @@
 </head>
 
 <body>
+<audio autoplay loop>
+    <source src="/sfx/music/theme_loop.mp3">
+</audio>
+<audio src="/sfx/upgrade_sounds/Pick_upgrade.wav" id='pick_upgrade'></audio>
+<audio src="/sfx/upgrade_sounds/GPU_upgrade.wav" id='gpu_upgrade'></audio>
+<audio src="/sfx/coin_sounds/dream1.wav" id='dream1'></audio>
+<audio src="/sfx/coin_sounds/dream2.wav" id='dream2'></audio>
+<audio src="/sfx/coin_sounds/dream3.wav" id='dream3'></audio>
+<audio src="/sfx/coin_sounds/inu1.wav" id='inu1'></audio>
+<audio src="/sfx/coin_sounds/inu2.wav" id='inu2'></audio>
+<audio src="/sfx/coin_sounds/inu3.wav" id='inu3'></audio>
+<audio src="/sfx/coin_sounds/mauri1.ogg" id="mauri1"></audio>
+<audio src="/sfx/coin_sounds/mauri2.ogg" id="mauri2"></audio>
+<audio src="/sfx/coin_sounds/mauri3.ogg" id="mauri3"></audio>
+
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-nav">
         <a class="navbar-brand" href="/">Crypto<strong>Clicker</strong></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -53,7 +68,7 @@
     <div style="text-align: center; margin-bottom: 15px;" class="container navbar-light bg-light" id="landing">
         <div class="row" style="padding-top: 90px;">
             <div class="col col-md-6" id="clickDiv" style="margin-top: 15px; margin-bottom: 140px;">
-                
+
             </div>
             <div class="col col-md-6" style="margin-bottom: 20px;">
                 <button id="prestigeButton" hidden="false">Prestige</button>
@@ -62,9 +77,6 @@
                 <span style="font-size:100%; font-family: impact;" id="banner"></span>
                 <p style="font-size:150%; margin-top: 15px; font-family: 'Trebuchet MS', Arial; color: white; user-select: none;" id="eventSign">No Current Events</p>
                 <div class="container" style="text-align: center;">
-                    <audio src="/sfx/Pick_upgrade.wav" id='pick_upgrade'></audio>
-                    <audio src="/sfx/upgrade_sounds/GPU_upgrade.wav" id='gpu_upgrade'></audio>
-                    <audio src="/sfx/upgrade_sounds/Coin_proto_1.wav" id='coin_click'></audio>
                     <div class="accordion" id="upgradeAccordian">
                         <div class="card">
                             <div class="card-header">
