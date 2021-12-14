@@ -17,7 +17,7 @@ var eventID = 0;
 let events = {};
 let spawnRate = 30;
 let userCoin;
-
+//a
 let sketch = (p) => {
     
     let coinSelection;
