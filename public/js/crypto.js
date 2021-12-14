@@ -249,9 +249,7 @@ jQuery(() => {
 
     const purchaseEvent = (upNum) => {
       var upSave = `up${upNum}`;
-      if(saveData.event[upSave] >= 1) {
-        document.getElementById(`event${upNum}`).hidden = true;
-      }
+      $(`#event${upNum-10}`).hide();
       if(count >= costs[upNum]) {
         count = count - costs[upNum];
         doEvent(upNum);
