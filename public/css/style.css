@@ -100,6 +100,11 @@ button#themeswitch.btn.btn-light.btn-toggle{
   color: #5D576B;
   font-family: 'pressstart2p';
 }
+button#prestigeButton.btn.btn-light{
+  background-color: #FFFAE3;
+  color: #5D576B;
+  font-family: 'pressstart2p';
+}
 span#counter{
   color: #FCFCFC;
   font-family: 'pressstart2p';
@@ -108,7 +113,15 @@ span.counter{
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
+span#pres.counter{
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
 p#eventSign {
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+span#banner {
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
@@ -171,11 +184,24 @@ body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
   color:#2D3142 ;
   font-family: 'pressstart2p';
 }
+body.dark-theme button#prestigeButton.btn.btn-light{
+  background-color: #BFC0C0;
+  color: #2D3142;
+  font-family: 'pressstart2p';
+}
 body.dark-theme span#counter{
   color: #BFC0C0;
   font-family: 'pressstart2p';
 }
+body.dark-theme span#pres.counter{
+  color: #BFC0C0;
+  font-family: 'pressstart2p';
+}
 body.dark-theme p#eventSign {
+  color: #BFC0C0;
+  font-family: 'pressstart2p';
+}
+body.dark-theme span#banner {
   color: #BFC0C0;
   font-family: 'pressstart2p';
 }
