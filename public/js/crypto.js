@@ -286,7 +286,7 @@ jQuery(() => {
           }
         }
         if(can_prestige == true){
-          document.getElementById("prestigeButton").hidden = false;
+          setTimeout(()=>{document.getElementById("prestigeButton").hidden = false;},8000);
         }
         else{
           document.getElementById("prestigeButton").hidden = true;
