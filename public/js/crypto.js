@@ -1,7 +1,9 @@
 let a = 0;
 
 let costs = [10,100,200,400,1000,100,200,400,800,1200];
+let origCosts = [10,100,200,400,1000,100,200,400,800,1200];
 let speedUp = [2,10,50,100,200,1,2,5,7,10];
+let origSpeedUp = [2,10,50,100,200,1,2,5,7,10];
 let count = +($("#counter").text()); // initial count value
 let delta = 1; // initial change in count per click
 let rate = 0;
@@ -10,6 +12,7 @@ var eventOn = false;
 var eventCountdown = 0;
 let prestige = 1;
 let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 var eventID = 0;
 let events = {};
 
@@ -173,6 +176,19 @@ jQuery(() => {
 
     $("#prestigeButton").on('click', function(){
       prestige++;
+      costs = origCosts;
+      speedUp = origSpeedUp;
+      saveData = origSave;
+      for(var i = 1; i < 6; i++){
+        var upLoc = "#costSpeed" + (i + 5).toString();
+        $(upLoc).text(costs[i + 4]);
+        document.getElementById('upgrade' + (i).toString()).hidden = false;
+      }
+      for(var i = 1; i < 6; i++){
+        var upLoc = "#costSpeed" + (i).toString();
+        $(upLoc).text(costs[i - 1]);
+        document.getElementById('speed' + (i).toString()).hidden = false;
+      }
     });
 
     $('#signOutLink').on('click', () => {
