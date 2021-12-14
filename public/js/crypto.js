@@ -8,6 +8,7 @@ let rate = 0;
 let randomUp = 0;
 var eventOn = false;
 var eventCountdown = 0;
+let prestige = 1;
 let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 var eventID = 0;
 let events = {};
@@ -170,6 +171,10 @@ jQuery(() => {
 
     $("#coinImg").on('click', click);
 
+    $("#prestigeButton").on('click', function(){
+      prestige++;
+    });
+
     $('#signOutLink').on('click', () => {
       document.cookie = 'session=none';
       window.location.href = '/';
@@ -232,6 +237,31 @@ jQuery(() => {
     }, 8000);
 
     setInterval(function(){
+      var can_prestige = false;
+        for(var i = 1; i < 6; i++){
+          var upSave = "up" + i.toString();
+          if(saveData.manual[upSave] >= 10){
+            can_prestige = true;
+          }
+          else{
+            can_prestige = false;
+          }
+        }
+        for(var i = 1; i < 6; i++){
+          var upSave = "up" + i.toString();
+          if(saveData.auto[upSave] >= 10){
+            can_prestige = true;
+          }
+          else{
+            can_prestige = false;
+          }
+        }
+        if(can_prestige == true){
+          document.getElementById("prestigeButton").hidden = false;
+        }
+        else{
+          document.getElementById("prestigeButton").hidden = true;
+        }
         var chance =  Math.floor(Math.random() * 500);
         if(eventOn == true){
             $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
@@ -242,12 +272,12 @@ jQuery(() => {
             }
             switch(eventID){
                 case 0:
-                    count = count + (rate *  2);
+                    count = count + (rate *  2 * prestige);
                     console.log("influencer");
                     $("#eventSign").text(`Influencer event(Growth Rate x2) Time Remaining: ${eventCountdown}`);
                     break;
                 case 1:
-                    count = count + Math.floor(rate /  2);
+                    count = count + Math.floor((rate /  2) * prestige);
                     console.log("crash");
                     $("#eventSign").text(`Market crash(Growth Rate x0.5) Time Remaining: ${eventCountdown}`);
                     break;
@@ -268,7 +298,7 @@ jQuery(() => {
             else{
                 console.log("no event");
             }
-            count = count + rate;
+            count = count + (rate * prestige);
             $("#counter").text(`coins: ${count}`);
         }
 
