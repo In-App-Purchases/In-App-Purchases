@@ -1,6 +1,6 @@
 let a = 0;
 
-let costs = [10,100,200,400,1000,100,200,400,800,1200];
+let costs = [10,100,200,400,1000,100,200,400,800,1200,1000,2000,2000,4000,5000];
 let origCosts = [10,100,200,400,1000,100,200,400,800,1200];
 let speedUp = [2,10,50,100,200,1,2,5,7,10];
 let origSpeedUp = [2,10,50,100,200,1,2,5,7,10];
@@ -215,6 +215,7 @@ jQuery(() => {
         }
         else{
             $("#banner").text('Insufficient Currency');
+            setTimeout(() => {$('#banner').text('');}, 2000);
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
@@ -236,6 +237,7 @@ jQuery(() => {
         }
         else{
             $("#banner").text('Insufficient Currency');
+            setTimeout(() => {$('#banner').text('');}, 2000);
         }
         $("#counter").text(`coins: ${count}`);
         var upLoc = "#costSpeed" + (upNum+1);
@@ -243,6 +245,22 @@ jQuery(() => {
         saveData.auto[upSave] = saveData.auto[upSave] + 1;
         $(upLoc).text(costs[upNum]);
     }
+
+    const purcahaseEvent = (upNum) => {
+      var upSave = `up${upNum}`;
+      if(saveData.event[upSave] >= 1) {
+        document.getElementById(`event${upNum}`).hidden = true;
+      }
+      if(count >= costs[upNum]) {
+        count = count - costs[upNum];
+        doEvent(upNum);
+        $('#banner').text('');
+      } else {
+        $('#banner').text('Insufficient Currency');
+        setTimeout(() => {$('#banner').text('');}, 2000);
+      }
+      $("#counter").text(`coins: ${count}`);
+    };
 
     //auto save timer
     setInterval(function(){
@@ -288,12 +306,13 @@ jQuery(() => {
             }
             switch(eventID){
                 case 0:
-                    count = count + (rate *  2 * prestige);
+                    delta *= 2;
+                    rate *= 2;
                     console.log("influencer");
-                    $("#eventSign").text(`Influencer event(Growth Rate x2) Time Remaining: ${eventCountdown}`);
+                    $("#eventSign").text(`Influencer event! (Growth Rate x2)`);
                     break;
                 case 1:
-                    count = count + Math.floor((rate /  2) * prestige);
+                    count = 0;
                     console.log("crash");
                     $("#eventSign").text(`Market crash(Growth Rate x0.5) Time Remaining: ${eventCountdown}`);
                     break;
@@ -361,6 +380,27 @@ jQuery(() => {
          playAudio2('gpu_upgrade');
         purchaseSpeed(9);
      });
+
+     $("#event1").click(function(){
+         playAudio2('gpu_upgrade');
+         purchaseEvent(10);
+      });
+      $("#event2").click(function(){
+          playAudio2('gpu_upgrade');
+          purchaseEvent(11);
+      });
+      $("#event3").click(function(){
+          playAudio2('gpu_upgrade');
+          purchaseEvent(12);
+      });
+      $("#event4").click(function(){
+          playAudio2('gpu_upgrade');
+          purchaseEvent(13);
+      });
+      $("#event5").click(function(){
+          playAudio2('gpu_upgrade');
+          purchaseEvent(14);
+      });
 
 
     $("#saveButton").click(function(){
