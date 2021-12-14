@@ -208,7 +208,7 @@ jQuery(() => {
             $("#banner").text('Insufficient Currency');
             setTimeout(() => {$('#banner').text('');}, 2000);
         }
-        $("#counter").text(`coins: ${count}`);
+        $("#counter").text(`coins: ${Math.floor(count)}`);
         var upLoc = "#costSpeed" + (upNum+1);
         var upSave = "up" + (upNum + 1).toString();
         saveData.manual[upSave] = saveData.manual[upSave] + 1;
@@ -230,7 +230,7 @@ jQuery(() => {
             $("#banner").text('Insufficient Currency');
             setTimeout(() => {$('#banner').text('');}, 2000);
         }
-        $("#counter").text(`coins: ${count}`);
+        $("#counter").text(`coins: ${Math.floor(count)}`);
         var upLoc = "#costSpeed" + (upNum+1);
         
         saveData.auto[upSave] = saveData.auto[upSave] + 1;
@@ -249,7 +249,7 @@ jQuery(() => {
         $('#banner').text('Insufficient Currency');
         setTimeout(() => {$('#banner').text('');}, 2000);
       }
-      $("#counter").text(`coins: ${count}`);
+      $("#counter").text(`coins: ${Math.floor(count)}`);
     };
 
     const doEvent = (val) => {
@@ -313,7 +313,7 @@ jQuery(() => {
                     break;
             }
 
-            $("#counter").text(`coins: ${count}`);
+            $("#counter").text(`coins: ${Math.floor(count)}`);
         }
         else{
             $("#eventSign").text('No Current Events');
@@ -329,7 +329,7 @@ jQuery(() => {
                 //console.log("no event");
             }
             count = count + (rate * prestige);
-            $("#counter").text(`coins: ${count}`);
+            $("#counter").text(`coins: ${Math.floor(count)}`);
         }
 
     }, 1000);
@@ -486,6 +486,6 @@ const click = () => {
     }
 
     count = count + (delta*prestige);
-    $("#counter").text(`coins: ${count}`);
+    $("#counter").text(`coins: ${Math.floor(count)}`);
     randomUp++;
 }
