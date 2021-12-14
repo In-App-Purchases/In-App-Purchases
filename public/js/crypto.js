@@ -270,9 +270,9 @@ jQuery(() => {
     setInterval(function(){
         console.log("SAVED GAME");
         $.post(`/save/${count}/${delta}`);
-        //$.post(`/saveManual/${saveData.manual.up1}/${saveData.manual.up2}/${saveData.manual.up3}/${saveData.manual.up4}/${saveData.manual.up5}`);
-        //$.post(`/saveAuto/${saveData.auto.up1}/${saveData.auto.up2}/${saveData.auto.up3}/${saveData.auto.up4}/${saveData.auto.up5}`);
-        //$.post(`/saveEvent/${saveData.event.up1}/${saveData.event.up2}/${saveData.event.up3}/${saveData.event.up4}/${saveData.event.up5}`);
+        $.post(`/saveManual/${saveData.manual.up1}/${saveData.manual.up2}/${saveData.manual.up3}/${saveData.manual.up4}/${saveData.manual.up5}`);
+        $.post(`/saveAuto/${saveData.auto.up1}/${saveData.auto.up2}/${saveData.auto.up3}/${saveData.auto.up4}/${saveData.auto.up5}`);
+        $.post(`/saveEvent/${saveData.event.up1}/${saveData.event.up2}/${saveData.event.up3}/${saveData.event.up4}/${saveData.event.up5}`);
     }, 8000);
 
     setInterval(function(){
