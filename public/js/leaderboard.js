@@ -27,7 +27,7 @@ const renderUsers = (data) => {
       <div class="col-2"></div>
       <div class="col-2"><p class="lg-text">${parseInt(index)+1}</p></div>
       <div class="col-4"><p class="lg-text"><a href="mailto:${data[index].email}" style="text-decoration: underline">${data[index].email}</a></p></div>
-      <div class="col-3"><p class="lg-text" style="text-align: left">${data[index].count}</p></div>
+      <div class="col-3"><p class="lg-text" style="text-align: right">${data[index].count}</p></div>
       <div class="col-1"></div>
     </div>
     <hr />
