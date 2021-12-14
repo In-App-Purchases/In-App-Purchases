@@ -138,12 +138,26 @@ app.post('/save/:count/:delta', (req, res) => {
 app.get('/load', (req, res) => {
   try {
     const uid = getUID(req.cookies.session);
-    const count = localDB.users[`${uid}`].count || 0;
-    const delta = localDB.users[`${uid}`].delta || 1;
-    res.json({
-      'count': count,
-      'delta': delta
-    });
+    let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, count: 0, delta: 1, pres: 1};
+    saveData.manual.up1 = localDB.users[`${uid}`].manual.up1 || 0;
+    saveData.manual.up2 = localDB.users[`${uid}`].manual.up2 || 0;
+    saveData.manual.up3 = localDB.users[`${uid}`].manual.up3 || 0;
+    saveData.manual.up4 = localDB.users[`${uid}`].manual.up4 || 0;
+    saveData.manual.up5 = localDB.users[`${uid}`].manual.up5 || 0;
+    saveData.auto.up1 = localDB.users[`${uid}`].auto.up1 || 0;
+    saveData.auto.up2 = localDB.users[`${uid}`].auto.up2 || 0;
+    saveData.auto.up3 = localDB.users[`${uid}`].auto.up3 || 0;
+    saveData.auto.up4 = localDB.users[`${uid}`].auto.up4 || 0;
+    saveData.auto.up5 = localDB.users[`${uid}`].auto.up5 || 0;
+    saveData.event.up1 = localDB.users[`${uid}`].event.up1 || 0;
+    saveData.event.up2 = localDB.users[`${uid}`].event.up2 || 0;
+    saveData.event.up3 = localDB.users[`${uid}`].event.up3 || 0;
+    saveData.event.up4 = localDB.users[`${uid}`].event.up4 || 0;
+    saveData.event.up5 = localDB.users[`${uid}`].event.up5 || 0;
+    saveData.count = localDB.users[`${uid}`].count || 0;
+    saveData.delta = localDB.users[`${uid}`].delta || 1;
+    saveData.pres = localDB.users[`${uid}`].pres || 1;
+    res.json(saveData);
   } catch (err) { res.send(err); }
 });
 
@@ -196,10 +210,6 @@ const createLeaderboardData = () => {
     return ret;
 };
 
-app.post('/prestige', (req, res) => {
-    const uid = getUID(req.cookies.session);
-
-});
 app.post('/saveManual/:one/:two/:three/:four/:five', (req, res) => {
     const uid = getUID(req.cookies.session);
     const one = req.params.one;
@@ -207,7 +217,8 @@ app.post('/saveManual/:one/:two/:three/:four/:five', (req, res) => {
     const three = req.params.three;
     const four = req.params.four;
     const five = req.params.five;
-    update(child(titleRef, uid), {manual: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+    update(child(users, uid), {manual: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+    res.send('saved');
 });
 app.post('/saveAuto/:one/:two/:three/:four/:five', (req, res) => {
     const uid = getUID(req.cookies.session);
@@ -216,15 +227,35 @@ app.post('/saveAuto/:one/:two/:three/:four/:five', (req, res) => {
     const three = req.params.three;
     const four = req.params.four;
     const five = req.params.five;
-    update(child(titleRef, uid), {auto: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+    update(child(users, uid), {auto: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+    res.send('saved');
 });
 app.post('/saveEvent/:one/:two/:three/:four/:five', (req, res) => {
-    console.log('saving events');
     const uid = getUID(req.cookies.session);
     const one = req.params.one;
     const two = req.params.two;
     const three = req.params.three;
     const four = req.params.four;
     const five = req.params.five;
-    update(child(titleRef, uid), {'event': '5'});
+    update(child(users, uid), {event: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+    res.send('saved');
+});
+
+app.post('/prestige', (req, res) => {
+    const uid = getUID(req.cookies.session);
+    for(let item in localDB.users[uid].manual) {
+        if(localDB.users[uid].manual[item] < 10) {
+            res.send('fail');
+            return;
+        }
+    }
+    for(let item in localDB.users[uid].auto) {
+        if(localDB.users[uid].auto[item] < 10) {
+            res.send('fail');
+            return;
+        }
+    }
+    const pres = localDB.users[uid].pres || 1;
+    update(child(users, uid),  {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, count: 0, delta: 1, pres: pres*2});
+    res.send('success');
 });

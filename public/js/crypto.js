@@ -11,7 +11,7 @@ let randomUp = 0;
 var eventOn = false;
 var eventCountdown = 0;
 let prestige = 1;
-let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
+let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, count: 0, delta: 0};
 let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
 var eventID = 0;
 let events = {};
@@ -177,24 +177,9 @@ jQuery(() => {
     $("#coinImg").on('click', click);
 
     $("#prestigeButton").on('click', function(){
-      prestige++;
-      costs = origCosts;
-      speedUp = origSpeedUp;
-      saveData = origSave;
-      for(var i = 1; i < 6; i++){
-        var upLoc = "#costSpeed" + (i + 5).toString();
-        $(upLoc).text(costs[i + 4]);
-        document.getElementById('upgrade' + (i).toString()).hidden = false;
-      }
-      for(var i = 1; i < 6; i++){
-        var upLoc = "#costSpeed" + (i).toString();
-        $(upLoc).text(costs[i - 1]);
-        document.getElementById('speed' + (i).toString()).hidden = false;
-      }
-      for(var i = 1; i < 6; i++){
-        document.getElementById('event' + (i).toString()).hidden = false;
-      }
-
+      $.post('/prestige', (res) => {
+        if(res=='success') window.location.href = '/';
+      });
     });
 
     $('#signOutLink').on('click', () => {
@@ -253,12 +238,12 @@ jQuery(() => {
     }
 
     const purchaseEvent = (upNum) => {
-      var upSave = `up${upNum}`;
-      document.getElementById('event' + (upNum  - 9).toString()).hidden = true;
+      var upSave = `up${upNum-10}`;
       if(count >= costs[upNum]) {
         count = count - costs[upNum];
         doEvent(upNum);
         $('#banner').text('');
+        document.getElementById('event' + (upNum  - 9).toString()).hidden = true;
         saveData.auto[upSave] = saveData.auto[upSave] + 1;
       } else {
         $('#banner').text('Insufficient Currency');
@@ -275,9 +260,9 @@ jQuery(() => {
     setInterval(function(){
         console.log("SAVED GAME");
         $.post(`/save/${count}/${delta}`);
-        //$.post(`/saveManual/${saveData.manual.up1}/${saveData.manual.up2}/${saveData.manual.up3}/${saveData.manual.up4}/${saveData.manual.up5}`);
-        //$.post(`/saveAuto/${saveData.auto.up1}/${saveData.auto.up2}/${saveData.auto.up3}/${saveData.auto.up4}/${saveData.auto.up5}`);
-        //$.post(`/saveEvent/${saveData.event.up1}/${saveData.event.up2}/${saveData.event.up3}/${saveData.event.up4}/${saveData.event.up5}`);
+        $.post(`/saveManual/${saveData.manual.up1}/${saveData.manual.up2}/${saveData.manual.up3}/${saveData.manual.up4}/${saveData.manual.up5}`);
+        $.post(`/saveAuto/${saveData.auto.up1}/${saveData.auto.up2}/${saveData.auto.up3}/${saveData.auto.up4}/${saveData.auto.up5}`);
+        $.post(`/saveEvent/${saveData.event.up1}/${saveData.event.up2}/${saveData.event.up3}/${saveData.event.up4}/${saveData.event.up5}`);
     }, 8000);
 
     setInterval(function(){
@@ -414,8 +399,20 @@ jQuery(() => {
 
     $.get('/load', (res) => {
       try {
+        saveData = res;
+        for(let item in saveData.manual) {
+          saveData.manual[item] = parseInt(saveData.manual[item]);
+        }
+        for(let item in saveData.auto) {
+          saveData.auto[item] = parseInt(saveData.auto[item]);
+        }
+        for(let item in saveData.event) {
+          saveData.event[item] = parseInt(saveData.event[item]);
+        }
         count = parseInt(res.count);
         delta = parseInt(res.delta);
+        prestige = parseInt(res.pres) || 1;
+        loadSavedata();
       } catch (err) {
         count = 0;
         delta = 1;
@@ -423,6 +420,45 @@ jQuery(() => {
     });
 
 });
+
+const loadSavedata = () => {
+  loadManual();
+}
+
+const loadManual = () => {
+  let tag;
+  for(let item in saveData.manual) {
+    tag = parseInt(item.substring(2));
+    if(saveData.manual[item]>=10) {
+      $(`#upgrade${tag}`).hide();
+    } else {
+      costs[tag]*=(Math.pow(1.5,tag));
+    }
+  }
+}
+
+const loadAuto = () => {
+  let tag;
+  for(let item in saveData.auto) {
+    tag = parseInt(item.substring(2));
+    if(saveData.auto[item]>=10) {
+      $(`#speed${tag}`).hide();
+    } else {
+      costs[tag+5]*=(Math.pow(1.5,tag));
+    }
+  }
+}
+
+const loadEvent = () => {
+  let tag;
+  for(let item in saveData.auto) {
+    tag = parseInt(item.substring(2));
+    if(saveData.event[item]) {
+      $(`#event${tag}`).hide();
+      spawnRate*=2;
+    }
+  }
+}
 
 function playAudio(url){ //deprecated
     new Audio(url).play();
@@ -448,7 +484,7 @@ const click = () => {
         playAudio2("mauri"+randInt)
     }
 
-    count = count + delta;
+    count = count + (delta*prestige);
     $("#counter").text(`coins: ${count}`);
     randomUp++;
 }
