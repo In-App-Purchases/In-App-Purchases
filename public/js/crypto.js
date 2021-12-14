@@ -11,10 +11,11 @@ let randomUp = 0;
 var eventOn = false;
 var eventCountdown = 0;
 let prestige = 1;
-let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
-let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
+let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
 var eventID = 0;
 let events = {};
+let spawnRate = 30;
 let userCoin;
 
 let sketch = (p) => {
@@ -95,7 +96,7 @@ let sketch = (p) => {
   };
   
   const makeImgs = () => {
-    if(Math.random()*1000 < 30)
+    if(Math.random()*1000 < spawnRate)
     imgs.push(new Img(img, sizeX, sizeY));
   };
   
@@ -190,6 +191,10 @@ jQuery(() => {
         $(upLoc).text(costs[i - 1]);
         document.getElementById('speed' + (i).toString()).hidden = false;
       }
+      for(var i = 1; i < 6; i++){
+        document.getElementById('event' + (i).toString()).hidden = false;
+      }
+
     });
 
     $('#signOutLink').on('click', () => {
@@ -247,11 +252,9 @@ jQuery(() => {
         $(upLoc).text(costs[upNum]);
     }
 
-    const purcahaseEvent = (upNum) => {
+    const purchaseEvent = (upNum) => {
       var upSave = `up${upNum}`;
-      if(saveData.event[upSave] >= 1) {
-        document.getElementById(`event${upNum}`).hidden = true;
-      }
+      document.getElementById('event' + (upNum  - 9).toString()).hidden = true;
       if(count >= costs[upNum]) {
         count = count - costs[upNum];
         doEvent(upNum);
@@ -261,14 +264,20 @@ jQuery(() => {
         setTimeout(() => {$('#banner').text('');}, 2000);
       }
       $("#counter").text(`coins: ${count}`);
+      saveData.auto[upSave] = saveData.auto[upSave] + 1;
+    };
+
+    const doEvent = (val) => {
+      spawnRate*=2;
     };
 
     //auto save timer
     setInterval(function(){
         console.log("SAVED GAME");
-        $.post(`/save/${count}/${delta}`, (res) => {
-
-        });
+        $.post(`/save/${count}/${delta}`);
+        //$.post(`/saveManual/${saveData.manual.up1}/${saveData.manual.up2}/${saveData.manual.up3}/${saveData.manual.up4}/${saveData.manual.up5}`);
+        //$.post(`/saveAuto/${saveData.auto.up1}/${saveData.auto.up2}/${saveData.auto.up3}/${saveData.auto.up4}/${saveData.auto.up5}`);
+        //$.post(`/saveEvent/${saveData.event.up1}/${saveData.event.up2}/${saveData.event.up3}/${saveData.event.up4}/${saveData.event.up5}`);
     }, 8000);
 
     setInterval(function(){
@@ -315,7 +324,7 @@ jQuery(() => {
                 case 1:
                     count = 0;
                     console.log("crash");
-                    $("#eventSign").text(`Market crash(Growth Rate x0.5) Time Remaining: ${eventCountdown}`);
+                    $("#eventSign").text(`Market crash! (Money? Never heard of it.)`);
                     break;
             }
 
@@ -402,29 +411,6 @@ jQuery(() => {
           playAudio2('gpu_upgrade');
           purchaseEvent(14);
       });
-
-
-    $("#saveButton").click(function(){
-        // localStorage.setItem('Count', count);
-        // localStorage.setItem('Delta', delta);
-        // $.ajax({
-        //     contentType: 'application/json',
-        //     data: saveData,
-        //     dataType: 'json',
-        //     url: '/api/savedata',
-        //     type: post,
-        //     success: function(result){
-        //         console.log("Posted");
-        //         console.log(result);
-        //     },
-        //     error: function (result){
-        //         console.log(result)
-        //     }
-        // })
-        $.post(`/save/${count}/${delta}`, (res) => {
-
-        });
-    });
 
     $.get('/load', (res) => {
       try {

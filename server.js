@@ -195,3 +195,36 @@ const createLeaderboardData = () => {
     }
     return ret;
 };
+
+app.post('/prestige', (req, res) => {
+    const uid = getUID(req.cookies.session);
+
+});
+app.post('/saveManual/:one/:two/:three/:four/:five', (req, res) => {
+    const uid = getUID(req.cookies.session);
+    const one = req.params.one;
+    const two = req.params.two;
+    const three = req.params.three;
+    const four = req.params.four;
+    const five = req.params.five;
+    update(child(titleRef, uid), {manual: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+});
+app.post('/saveAuto/:one/:two/:three/:four/:five', (req, res) => {
+    const uid = getUID(req.cookies.session);
+    const one = req.params.one;
+    const two = req.params.two;
+    const three = req.params.three;
+    const four = req.params.four;
+    const five = req.params.five;
+    update(child(titleRef, uid), {auto: {up1: one,up2: two,up3: three,up4: four,up5: five}});
+});
+app.post('/saveEvent/:one/:two/:three/:four/:five', (req, res) => {
+    console.log('saving events');
+    const uid = getUID(req.cookies.session);
+    const one = req.params.one;
+    const two = req.params.two;
+    const three = req.params.three;
+    const four = req.params.four;
+    const five = req.params.five;
+    update(child(titleRef, uid), {'event': '5'});
+});

@@ -72,10 +72,10 @@
             </div>
             <div class="col col-md-6" style="margin-bottom: 20px;">
                 <button id="prestigeButton" hidden="false">Prestige</button>
-                <span style="font-size:330%; font-family: 'Trebuchet MS', Arial; user-select: none;" id="counter">coins: Loading...</span>
+                <span style="font-size:150%; user-select: none;" id="counter">coins: Loading...</span>
                 <br>
                 <span style="font-size:100%; font-family: impact;" id="banner"></span>
-                <p style="font-size:150%; margin-top: 15px; font-family: 'Trebuchet MS', Arial; color: white; user-select: none;" id="eventSign">No Current Events</p>
+                <p style="font-size:75%; margin-top: 15px; user-select: none;" id="eventSign">No Current Events</p>
                 <div class="container" style="text-align: center;">
                     <div class="accordion" id="upgradeAccordian">
                         <div class="card">
@@ -193,21 +193,21 @@
                             </div>
                             <div id="collapseEvent" class="collapse" data-parent="#upgradeAccordian">
                                 <div class="row">
-                                    <button id="Event1" class="btn btn-upgr">
+                                    <button id="event1" class="btn btn-upgr">
                                         Sponsor Lakers |
                                         <span class="upgradeIcon">cost: </span>
                                         <span id="costSpeed6" class="upgradeCost">1000</span>
                                         <br>
                                         <img src="/img/noun-basketball-4450664.svg" alt="fan1" height="60" width="60">
                                     </button>
-                                    <button id="Event2" class="btn btn-upgr">
+                                    <button id="event2" class="btn btn-upgr">
                                          Featured by Yahoo Finance |
                                         <span class="upgradeIcon">cost: </span>
                                         <span id="costSpeed7" class="upgradeCost">2000</span>
                                         <br>
                                         <img src="/img/noun-media-2150730.svg" alt="fan1" height="60" width="60">
                                     </button>
-                                    <button id="Event3" class="btn btn-upgr">
+                                    <button id="event3" class="btn btn-upgr">
                                         Listed by Coinbase |
                                        <span class="upgradeIcon">cost: </span>
                                        <span id="costSpeed7" class="upgradeCost">2000</span>
@@ -216,14 +216,14 @@
                                    </button>
                                 </div>
                                 <div class="row">
-                                    <button id="Event4" class="btn btn-upgr">
+                                    <button id="event4" class="btn btn-upgr">
                                         Purchase Staples Center |
                                         <span class="upgradeIcon">cost: </span>
                                         <span id="costSpeed7" class="upgradeCost">4000</span>
                                         <br>
                                         <img src="/img/noun-arena-3155394.svg" alt="fan1" height="60" width="60">
                                     </button>
-                                    <button id="Event5" class="btn btn-upgr">
+                                    <button id="event5" class="btn btn-upgr">
                                         Elon Tweets |
                                         <span class="upgradeIcon">cost: </span>
                                         <span id="costSpeed6" class="upgradeCost">5000</span>
@@ -241,16 +241,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.onkeypress = function (e) {
-            e = e || window.event;
-
-            if (e.keyCode === 13) {
-                document.documentElement.classList.toggle('dark-mode');
-
-            }
-        }
-    </script>
     <footer>
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
