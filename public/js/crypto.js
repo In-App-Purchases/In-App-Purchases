@@ -259,12 +259,12 @@ jQuery(() => {
         count = count - costs[upNum];
         doEvent(upNum);
         $('#banner').text('');
+        saveData.auto[upSave] = saveData.auto[upSave] + 1;
       } else {
         $('#banner').text('Insufficient Currency');
         setTimeout(() => {$('#banner').text('');}, 2000);
       }
       $("#counter").text(`coins: ${count}`);
-      saveData.auto[upSave] = saveData.auto[upSave] + 1;
     };
 
     const doEvent = (val) => {
