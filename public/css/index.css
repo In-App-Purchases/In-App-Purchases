@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'pressstart2p';
+  src:url(/fonts/pressstart2p-regular.ttf);
+  font-style: normal;
+}
 body {
     user-select: none;
     background-color: #99E1D9;
@@ -10,6 +15,7 @@ body {
 h2 {
     padding: 2%;
     color: #FCFCFC;
+    font-family: 'pressstart2p';
 }
 .landing {
     display: none;
@@ -17,6 +23,7 @@ h2 {
 .form-group {
     padding: 1%;
     color:#FCFCFC;
+    font-family: 'pressstart2p';
 }
 input#inputEmail.form-control {
   background-color: #FCFCFC;
@@ -29,6 +36,7 @@ input#inputEmail.form-control {
 }
 nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
   color: #FCFCFC;
+  font-family: 'pressstart2p';
 }
 div#landing.container.navbar-light.bg-light{
   background-color: #F7567C;
@@ -47,26 +55,32 @@ div#landing.container.navbar-light.bg-landing{
 }
 button#submitLogin.btn.btn-light{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFFAE3;
 }
 button#submitLogin.btn.btn-light:hover{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFF8D6;
 }
 button#signInLink.btn.btn-light{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFFAE3;
 }
 button#signInLink.btn.btn-light:hover{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFF8D6;
 }
 button#cryptoAltButton.btn.btn-primary.btn-lg{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFFAE3;
 }
 button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
   color: #5D576B;
+  font-family: 'pressstart2p';
   background-color: #FFF8D6;
 }
 input#inputEmail1.form-control{
@@ -79,8 +93,9 @@ input#inputPassword2.form-control{
   background-color: #FCFCFC;
 }
 button#themeswitch.btn.btn-light.btn-toggle{
-  background-color: ;
-  color: ;
+  background-color: #FFFAE3;
+  color: #5D576B;
+  font-family: 'pressstart2p';
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
@@ -90,16 +105,19 @@ body.dark-theme {
 body.dark-theme h2 {
     padding: 2%;
     color: #BFC0C0;
+    font-family: 'pressstart2p';
 }
 body.dark-theme .form-group {
     padding: 1%;
     color:#BFC0C0;/*grey*/
+    font-family: 'pressstart2p';
 }
 body.dark-theme .bg-nav {
   background-color:#2D3142;/*darker blue*/
 }
 body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
   color: #BFC0C0; /*grey*/
+  font-family: 'pressstart2p';
 }
 body.dark-theme div#landing.container.navbar-light.bg-light{
   background-color: #403D39;/*dark grey*/
@@ -119,26 +137,32 @@ body.dark-theme div#landing.container.navbar-light.bg-landing{
 body.dark-theme button#submitLogin.btn.btn-light{
   color: #2D3142;
   background-color: #EF8354;
+  font-family: 'pressstart2p';
 }
 body.dark-theme button#submitLogin.btn.btn-light:hover{
   color: #2D3142;
   background-color: #EB6A33;
+  font-family: 'pressstart2p';
 }
 body.dark-theme button#signInLink.btn.btn-light{
   color: #2D3142;
   background-color: #EF8354;
+  font-family: 'pressstart2p';
 }
 body.dark-theme button#signInLink.btn.btn-light:hover{
   color: #2D3142;
   background-color: #EB6A33;
+  font-family: 'pressstart2p';
 }
 body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg{
   color: #2D3142;
   background-color: #EF8354;
+  font-family: 'pressstart2p';
 }
 body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
   color: #2D3142;
   background-color: #EB6A33;
+  font-family: 'pressstart2p';
 }
 body.dark-theme input#inputEmail1.form-control{
   background-color: #BFC0C0;
@@ -150,42 +174,13 @@ body.dark-theme input#inputPassword2.form-control{
   background-color: #BFC0C0;
 }
 body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
-  background-color:#BFC0C0 ;/**/
+  background-color:#EF8354 ;/**/
   color:#2D3142 ;
+  font-family: 'pressstart2p';
 }
 body.dark-theme input#inputEmail.form-control {
   background-color: #BFC0C0;
 }
-
-/*body {
-    user-select: none;
-}
-
-.container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-h2 {
-    padding: 2%;
-}
-
-.form-group {
-    padding: 1%;
-}
-
-.dark-mode {
-    filter: invert(100%)
-}
-
-::placeholder {
-    color: red;
-}
-
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: red;
-}
-
 ::-ms-input-placeholder { /* Microsoft Edge */
     color: red;
 }*/

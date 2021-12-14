@@ -53,14 +53,14 @@
     <div style="text-align: center; margin-bottom: 15px;" class="container navbar-light bg-light" id="landing">
         <div class="row" style="padding-top: 90px;">
             <div class="col col-md-6" id="clickDiv" style="margin-top: 15px; margin-bottom: 140px;">
-                
+
             </div>
             <div class="col col-md-6" style="margin-bottom: 20px;">
                 <button id="prestigeButton" hidden="false">Prestige</button>
-                <span style="font-size:330%; font-family: 'Trebuchet MS', Arial; user-select: none;" id="counter">coins: Loading...</span>
+                <span style="font-size:150%; user-select: none;" id="counter">coins: Loading...</span>
                 <br>
                 <span style="font-size:100%; font-family: impact;" id="banner"></span>
-                <p style="font-size:150%; margin-top: 15px; font-family: 'Trebuchet MS', Arial; color: white; user-select: none;" id="eventSign">No Current Events</p>
+                <p style="font-size:75%; margin-top: 15px; user-select: none;" id="eventSign">No Current Events</p>
                 <div class="container" style="text-align: center;">
                     <audio src="/sfx/Pick_upgrade.wav" id='pick_upgrade'></audio>
                     <audio src="/sfx/upgrade_sounds/GPU_upgrade.wav" id='gpu_upgrade'></audio>
@@ -229,16 +229,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.onkeypress = function (e) {
-            e = e || window.event;
-
-            if (e.keyCode === 13) {
-                document.documentElement.classList.toggle('dark-mode');
-
-            }
-        }
-    </script>
     <footer>
         <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

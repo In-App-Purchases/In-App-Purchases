@@ -12,7 +12,7 @@ var eventOn = false;
 var eventCountdown = 0;
 let prestige = 1;
 let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
-let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, money: count};
 var eventID = 0;
 let events = {};
 let spawnRate = 30;
@@ -190,6 +190,10 @@ jQuery(() => {
         $(upLoc).text(costs[i - 1]);
         document.getElementById('speed' + (i).toString()).hidden = false;
       }
+      for(var i = 1; i < 6; i++){
+        document.getElementById('event' + (i).toString()).hidden = false;
+      }
+      
     });
 
     $('#signOutLink').on('click', () => {
@@ -249,7 +253,7 @@ jQuery(() => {
 
     const purchaseEvent = (upNum) => {
       var upSave = `up${upNum}`;
-      $(`#event${upNum-10}`).hide();
+      document.getElementById('event' + (upNum  - 9).toString()).hidden = true;
       if(count >= costs[upNum]) {
         count = count - costs[upNum];
         doEvent(upNum);
