@@ -1,13 +1,13 @@
+@font-face {
+  font-family: 'pressstart2p';
+  src:url(/fonts/pressstart2p-regular.ttf);
+  font-style: normal;
+}
 body {
     background-color: #99E1D9;
     margin: 0%;
     padding: 0%;
     padding-top: 70px;
-}
-@font-face {
-  font-family: 'pressstart2p';
-  src:url(/fonts/pressstart2p-regular.ttf);
-  font-style: normal;
 }
 .container {
     margin-top: 1%;
@@ -53,7 +53,11 @@ h1 {
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
-div#leaderStats.col a{
+p.lg-text {
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+p.lg-text a{
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
@@ -90,7 +94,11 @@ body.dark-theme h1 {
   color: #BFC0C0;
   font-family: 'pressstart2p';
 }
-body.dark-theme div#leaderStats.col a{
-  color: #BFC0C0;
+body.dark-theme p.lg-text {
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+body.dark-theme p.lg-text a{
+  color: #FCFCFC;
   font-family: 'pressstart2p';
 }
