@@ -70,6 +70,9 @@ button.btn.btn-cust:hover {
 }
 button.btn.btn-upgr {
   background-color: #EFFAF0;
+  color: #5D576B;
+  font-family: 'pressstart2p';
+  font-size: 45%;
 }
 .card {
   background-color: #F7567C;
