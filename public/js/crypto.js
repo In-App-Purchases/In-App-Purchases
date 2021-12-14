@@ -1,14 +1,18 @@
 let a = 0;
 
 let costs = [10,100,200,400,1000,100,200,400,800,1200,1000,2000,2000,4000,5000];
+let origCosts = [10,100,200,400,1000,100,200,400,800,1200];
 let speedUp = [2,10,50,100,200,1,2,5,7,10];
+let origSpeedUp = [2,10,50,100,200,1,2,5,7,10];
 let count = +($("#counter").text()); // initial count value
 let delta = 1; // initial change in count per click
 let rate = 0;
 let randomUp = 0;
 var eventOn = false;
 var eventCountdown = 0;
-let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {ev1: 0, ev2: 0, ev3: 0, ev4: 0, ev5: 0}, money: count};
+let prestige = 1;
+let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
+let origSave = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {}, money: count};
 var eventID = 0;
 let events = {};
 
@@ -170,6 +174,23 @@ jQuery(() => {
 
     $("#coinImg").on('click', click);
 
+    $("#prestigeButton").on('click', function(){
+      prestige++;
+      costs = origCosts;
+      speedUp = origSpeedUp;
+      saveData = origSave;
+      for(var i = 1; i < 6; i++){
+        var upLoc = "#costSpeed" + (i + 5).toString();
+        $(upLoc).text(costs[i + 4]);
+        document.getElementById('upgrade' + (i).toString()).hidden = false;
+      }
+      for(var i = 1; i < 6; i++){
+        var upLoc = "#costSpeed" + (i).toString();
+        $(upLoc).text(costs[i - 1]);
+        document.getElementById('speed' + (i).toString()).hidden = false;
+      }
+    });
+
     $('#signOutLink').on('click', () => {
       document.cookie = 'session=none';
       window.location.href = '/';
@@ -250,6 +271,31 @@ jQuery(() => {
     }, 8000);
 
     setInterval(function(){
+      var can_prestige = false;
+        for(var i = 1; i < 6; i++){
+          var upSave = "up" + i.toString();
+          if(saveData.manual[upSave] >= 10){
+            can_prestige = true;
+          }
+          else{
+            can_prestige = false;
+          }
+        }
+        for(var i = 1; i < 6; i++){
+          var upSave = "up" + i.toString();
+          if(saveData.auto[upSave] >= 10){
+            can_prestige = true;
+          }
+          else{
+            can_prestige = false;
+          }
+        }
+        if(can_prestige == true){
+          document.getElementById("prestigeButton").hidden = false;
+        }
+        else{
+          document.getElementById("prestigeButton").hidden = true;
+        }
         var chance =  Math.floor(Math.random() * 500);
         if(eventOn == true){
             $("#eventSign").text(`Event is Happening! Time Remaining: ${eventCountdown}`);
@@ -287,7 +333,7 @@ jQuery(() => {
             else{
                 console.log("no event");
             }
-            count = count + rate;
+            count = count + (rate * prestige);
             $("#counter").text(`coins: ${count}`);
         }
 

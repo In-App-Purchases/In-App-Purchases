@@ -4,12 +4,18 @@ body {
     padding: 0%;
     padding-top: 70px;
 }
+@font-face {
+  font-family: 'pressstart2p';
+  src:url(/fonts/pressstart2p-regular.ttf);
+  font-style: normal;
+}
 .container {
     margin-top: 1%;
     text-align: center;
 }
 h2 {
     padding: 2%;
+    font-family: 'pressstart2p';
 }
 .landing {
     display: none;
@@ -22,6 +28,7 @@ h2 {
 }
 a.dropdown-item{
   color:#EFFAF0;
+  font-family: 'pressstart2p';
 }
 .nav-item:hover{
   background-color: #F7567C;
@@ -40,6 +47,15 @@ div.row {
 }
 nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
   color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+h1 {
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+div#leaderStats.col a{
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
@@ -68,4 +84,13 @@ body.dark-theme .card {
 }
 body.dark-theme nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
   color: #BFC0C0;
+  font-family: 'pressstart2p';
+}
+body.dark-theme h1 {
+  color: #BFC0C0;
+  font-family: 'pressstart2p';
+}
+body.dark-theme div#leaderStats.col a{
+  color: #BFC0C0;
+  font-family: 'pressstart2p';
 }
