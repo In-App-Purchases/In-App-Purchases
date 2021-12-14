@@ -138,25 +138,62 @@ app.post('/save/:count/:delta', (req, res) => {
 app.get('/load', (req, res) => {
   try {
     const uid = getUID(req.cookies.session);
+    console.log(uid);
     let saveData = {manual: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, auto: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, event: {up1: 0,up2: 0,up3: 0,up4: 0,up5: 0}, count: 0, delta: 1, pres: 1};
-    saveData.manual.up1 = localDB.users[`${uid}`].manual.up1 || 0;
-    saveData.manual.up2 = localDB.users[`${uid}`].manual.up2 || 0;
-    saveData.manual.up3 = localDB.users[`${uid}`].manual.up3 || 0;
-    saveData.manual.up4 = localDB.users[`${uid}`].manual.up4 || 0;
-    saveData.manual.up5 = localDB.users[`${uid}`].manual.up5 || 0;
-    saveData.auto.up1 = localDB.users[`${uid}`].auto.up1 || 0;
-    saveData.auto.up2 = localDB.users[`${uid}`].auto.up2 || 0;
-    saveData.auto.up3 = localDB.users[`${uid}`].auto.up3 || 0;
-    saveData.auto.up4 = localDB.users[`${uid}`].auto.up4 || 0;
-    saveData.auto.up5 = localDB.users[`${uid}`].auto.up5 || 0;
-    saveData.event.up1 = localDB.users[`${uid}`].event.up1 || 0;
-    saveData.event.up2 = localDB.users[`${uid}`].event.up2 || 0;
-    saveData.event.up3 = localDB.users[`${uid}`].event.up3 || 0;
-    saveData.event.up4 = localDB.users[`${uid}`].event.up4 || 0;
-    saveData.event.up5 = localDB.users[`${uid}`].event.up5 || 0;
-    saveData.count = localDB.users[`${uid}`].count || 0;
-    saveData.delta = localDB.users[`${uid}`].delta || 1;
-    saveData.pres = localDB.users[`${uid}`].pres || 1;
+    try{
+        saveData.manual.up1 = localDB.users[`${uid}`].manual.up1;
+    } catch(err) {saveData.manual.up1 = 0;} 
+    try{
+        saveData.manual.up2 = localDB.users[`${uid}`].manual.up2 || 0;
+    } catch(err) {saveData.manual.up2 = 0;} 
+    try{
+        saveData.manual.up3 = localDB.users[`${uid}`].manual.up3 || 0;
+    } catch(err) {saveData.manual.up3 = 0;} 
+    try{
+        saveData.manual.up4 = localDB.users[`${uid}`].manual.up4 || 0;
+    } catch(err) {saveData.manual.up4 = 0;} 
+    try{
+        saveData.manual.up5 = localDB.users[`${uid}`].manual.up5 || 0;
+    } catch(err) {saveData.manual.up5 = 0;} 
+    try{
+        saveData.auto.up1 = localDB.users[`${uid}`].auto.up1 || 0;
+    } catch(err) {saveData.auto.up1 = 0;} 
+    try{
+        saveData.auto.up2 = localDB.users[`${uid}`].auto.up2 || 0;
+    } catch(err) {saveData.auto.up2 = 0;} 
+    try{
+        saveData.auto.up3 = localDB.users[`${uid}`].auto.up3 || 0;
+    } catch(err) {saveData.auto.up3 = 0;} 
+    try{
+        saveData.auto.up4 = localDB.users[`${uid}`].auto.up4 || 0;
+    } catch(err) {saveData.auto.up4 = 0;} 
+    try{
+        saveData.auto.up5 = localDB.users[`${uid}`].auto.up5 || 0;
+    } catch(err) {saveData.auto.up5 = 0;} 
+    try{
+        saveData.event.up1 = localDB.users[`${uid}`].event.up1 || 0;
+    } catch(err) {saveData.event.up1 = 0;} 
+    try{
+        saveData.event.up2 = localDB.users[`${uid}`].event.up2 || 0;
+    } catch(err) {saveData.event.up2 = 0;} 
+    try{
+        saveData.event.up3 = localDB.users[`${uid}`].event.up3 || 0;
+    } catch(err) {saveData.event.up3 = 0;} 
+    try{
+        saveData.event.up4 = localDB.users[`${uid}`].event.up4 || 0;
+    } catch(err) {saveData.event.up4 = 0;} 
+    try{
+        saveData.event.up5 = localDB.users[`${uid}`].event.up5 || 0;
+    } catch(err) {saveData.event.up5 = 0;} 
+    try{
+        saveData.count = localDB.users[`${uid}`].count || 0;
+    } catch(err) {saveData.count = 0;} 
+    try{
+        saveData.delta = localDB.users[`${uid}`].delta || 1;
+    } catch(err) {saveData.delta = 0;} 
+    try{
+        saveData.pres = localDB.users[`${uid}`].pres || 1;
+    } catch(err) {saveData.delta = 1;} 
     res.json(saveData);
   } catch (err) { res.send(err); }
 });
