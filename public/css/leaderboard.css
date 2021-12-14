@@ -41,6 +41,12 @@ div.row {
 nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
   color: #FCFCFC;
 }
+h1 {
+  color: #FCFCFC;
+}
+div#leaderStats.col a{
+  color: #FCFCFC;
+}
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
     background-color: #4F5D75;
@@ -67,5 +73,11 @@ body.dark-theme .card {
   background-color: #403D39;
 }
 body.dark-theme nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
+  color: #BFC0C0;
+}
+body.dark-theme h1 {
+  color: #BFC0C0;
+}
+body.dark-theme div#leaderStats.col a{
   color: #BFC0C0;
 }
