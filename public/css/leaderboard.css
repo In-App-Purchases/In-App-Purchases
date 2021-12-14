@@ -61,6 +61,12 @@ p.lg-text a{
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
+button#themeswitch.btn.btn-light.btn-toggle{
+  background-color: #FFFAE3;
+  color: #5D576B;
+  font-family: 'pressstart2p';
+}
+
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
     background-color: #4F5D75;
@@ -100,5 +106,10 @@ body.dark-theme p.lg-text {
 }
 body.dark-theme p.lg-text a{
   color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
+body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
+  background-color:#EF8354 ;/**/
+  color:#2D3142 ;
   font-family: 'pressstart2p';
 }

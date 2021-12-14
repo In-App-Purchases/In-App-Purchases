@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'pressstart2p';
+  src:url(/fonts/pressstart2p-regular.ttf);
+  font-style: normal;
+}
 body {
     user-select: none;
     background-color: #99E1D9;
@@ -7,6 +12,7 @@ body {
 }
 nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
   color: #FCFCFC;
+  font-family: 'pressstart2p';
 }
 .nav-item:hover{
   background-color: #F7567C;
@@ -17,20 +23,29 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
 a.dropdown-item:hover {
   background-color: #99E1D9;
   color: #5D576B;
+  font-family: 'pressstart2p';
 }
 div.card {
   background-color: #F7567C;
 }
 h5{
   color: #FCFCFC;
+  font-family: 'pressstart2p';
 }
 p {
   color: #FCFCFC;
+  font-family: 'pressstart2p';
 }
 .card-text p {
   color: #FCFCFC;
+  font-family: 'pressstart2p';
 
+}button#themeswitch.btn.btn-light.btn-toggle{
+  background-color: #FFFAE3;
+  color: #5D576B;
+  font-family: 'pressstart2p';
 }
+
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
     user-select: none;
@@ -41,6 +56,7 @@ body.dark-theme .bg-nav {
 }
 body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
   color: #BFC0C0;
+  font-family: 'pressstart2p';
 }
 body.dark-theme .nav-item:hover{
   background-color: #403D39;
@@ -51,19 +67,29 @@ body.dark-theme .dropdown-menu.show {
 body.dark-theme a.dropdown-item:hover {
   background-color: #4F5D75;
   color: #5D576B;
+  font-family: 'pressstart2p';
 }
 body.dark-theme div.card {
   background-color: #403D39;
 }
 body.dark-theme p{
     color: #2D3142;
+    font-family: 'pressstart2p';
 }
 body.dark-theme h5{
   color: #BFC0C0;
+  font-family: 'pressstart2p';
 }
 body.dark-theme p {
   color: #BFC0C0;
+  font-family: 'pressstart2p';
 }
 body.dark-theme .card-text p {
   color: #BFC0C0;
+  font-family: 'pressstart2p';
+}
+body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
+  background-color:#EF8354 ;/**/
+  color:#2D3142 ;
+  font-family: 'pressstart2p';
 }
