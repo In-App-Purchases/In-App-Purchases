@@ -412,6 +412,7 @@ jQuery(() => {
         count = parseInt(res.count);
         delta = parseInt(res.delta);
         prestige = parseInt(res.pres) || 1;
+        $('#pres').text(`Prestige: ${prestige}`);
         loadSavedata();
       } catch (err) {
         count = 0;

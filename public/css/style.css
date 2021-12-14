@@ -104,6 +104,10 @@ span#counter{
   color: #FCFCFC;
   font-family: 'pressstart2p';
 }
+span.counter{
+  color: #FCFCFC;
+  font-family: 'pressstart2p';
+}
 p#eventSign {
   color: #FCFCFC;
   font-family: 'pressstart2p';
