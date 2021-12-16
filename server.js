@@ -23,7 +23,6 @@ import jwt from 'jsonwebtoken';
 import express from 'express';
 import path from 'path';
 import cookieParser from "cookie-parser";
-import _ from 'lodash';
 
 const port = process.env.PORT || 3000;
 const app = express();
