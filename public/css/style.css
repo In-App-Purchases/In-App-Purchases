@@ -1,27 +1,13 @@
-@font-face {
+@font-face { /*declares the font family and where it is stored*/
   font-family: 'pressstart2p';
   src:url(/fonts/PressStart2P-Regular.ttf);
   font-style: normal;
 }
 body {
-    background-color: #99E1D9;
+    background-color: #99E1D9; /*Middle blue green*/
     margin: 0%;
     padding: 0%;
     padding-top: 70px;
-}
-#rigUpgrades{
-    display: flex;
-}
-#speedUpgrades{
-    display: flex;
-}
-.upgrade{
-    flex: 1;
-}
-div#upgradeMenuDropdown {
-    position: relative;
-    height: 80%;
-    width: 100%;
 }
 .container {
     margin-top: 1%;
@@ -34,174 +20,163 @@ h2 {
 .landing {
     display: none;
 }
-#scrollUpgrades {
-    height: inherit;
-    overflow: scroll;
-}
-.dark-mode {
-    filter: invert(100%);
-}
 .bg-nav {
-  background-color: #5D576B;
-}
-a.dropdown-item{
-  color:#EFFAF0;
-  font-family: 'pressstart2p';
+  background-color: #5D576B; /* independence (dark blue)*/
 }
 .nav-item:hover{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 .dropdown-menu.show {
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 a.dropdown-item:hover {
-  background-color: #99E1D9;
+  background-color: #99E1D9; /*Middle blue green*/
 }
 div.row {
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 button.btn.btn-cust {
-  background-color: #FFFAE3;
-  color:#5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 button.btn.btn-cust:hover {
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 button.btn.btn-upgr {
   background-color: #EFFAF0;
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
   font-size: 45%;
 }
 .card {
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 div.card-header{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 div.card-header:hover{
-  background-color: #FFF8D6;
-  color: #5D576B;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 button.btn.btn-link{
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 button#themeswitch.btn.btn-light.btn-toggle{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 button#prestigeButton.btn.btn-light{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 span#counter{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 span.counter{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 span#pres.counter{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 p#eventSign {
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 span#banner {
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
-    background-color: #4F5D75;
+    background-color: #4F5D75; /* independence (dark blue)*/
     margin: 0%;
     padding: 0%;
     padding-top: 70px;
 }
 body.dark-theme .bg-nav {
-  background-color: #2D3142;
+  background-color: #2D3142; /* space cadet (dark blue)*/
 }
 body.dark-theme .nav-item:hover{
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme .dropdown-menu.show {
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme a.dropdown-item:hover {
-  background-color: #4F5D75;
+  background-color: #4F5D75; /* independence (dark blue)*/
 }
 body.dark-theme div.row {
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme button.btn.btn-cust {
-  background-color: #EF8354;
-  color:#2D3142;
+  background-color: #EF8354; /*mandarin*/
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button.btn.btn-cust:hover {
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme button.btn.btn-upgr {
-  background-color: #BFC0C0;
+  background-color: #BFC0C0; /*silver*/
 }
 body.dark-theme .card {
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme div.card-header{
-  background-color: #EF8354;
-  color: #5D576B;
+  background-color: #EF8354; /*mandarin*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme div.card-header:hover{
-  background-color: #EB6A33;
-  color: #5D576B;
+  background-color: #EB6A33; /*Orange Red*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button.btn.btn-link{
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
-  background-color:#EF8354 ;/**/
-  color:#2D3142 ;
+  background-color:#EF8354; /*mandarin*/
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#prestigeButton.btn.btn-light{
-  background-color: #BFC0C0;
-  color: #2D3142;
+  background-color: #BFC0C0; /*silver*/
+  color: #2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme span#counter{
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme span#pres.counter{
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme p#eventSign {
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme span#banner {
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }

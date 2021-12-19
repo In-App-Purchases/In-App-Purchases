@@ -1,24 +1,18 @@
-@font-face {
+@font-face { /*declares the font family and where it is stored*/
   font-family: 'pressstart2p';
   src:url(/fonts/PressStart2P-Regular.ttf);
   font-style: normal;
 }
 body {
     user-select: none;
-    background-color: #99E1D9;
+    background-color: #99E1D9; /*Middle blue green*/
 }
 h2 {
     padding: 2%;
-    color:#FCFCFC;
+    color:#FCFCFC; /*white*/
     font-family: 'pressstart2p';
 }
-.landing {
-    display: none;
-}
-.dark-mode {
-    filter: invert(100%);
-}
-.mySlides {
+.mySlides { /*positions and set max size for slideshow on about page*/
   display: block;
    margin-left: auto;
    margin-right: auto;
@@ -26,187 +20,185 @@ h2 {
   max-width: 600px;
 }
 .bg-nav {
-  background-color: #5D576B;
+  background-color: #5D576B; /* independence (dark blue)*/
 }
 nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 .nav-item:hover{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 .dropdown-menu.show {
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 a.dropdown-item:hover {
-  background-color: #99E1D9;
-  color: #5D576B;
+  background-color: #99E1D9; /*Middle blue green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 div#landing.container.navbar-light.bg-landing{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 a#nitin.list-group-item.list-group-item-action{
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
   margin-top:2%;
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 a#noah.list-group-item.list-group-item-action{
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
   margin-top:2%;
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 a#parth.list-group-item.list-group-item-action{
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
   margin-top:2%;
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 a#jake.list-group-item.list-group-item-action{
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
   margin-top:2%;
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 a#justin.list-group-item.list-group-item-action{
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
   margin-top:2%;
-  color:#5D576B;
+  color:#5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 a#nitin.list-group-item.list-group-item-action:hover{
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 a#noah.list-group-item.list-group-item-action:hover{
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 a#parth.list-group-item.list-group-item-action:hover{
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 a#jake.list-group-item.list-group-item-action:hover{
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 a#justin.list-group-item.list-group-item-action:hover{
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 div.list-group a{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 div.list-group a:hover{
-  background-color: #FFF8D6;
-  color: #5D576B;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 div.col h1,div.col p{
-    color: #FCFCFC;
+    color: #FCFCFC; /*white*/
     font-family: 'pressstart2p';
 }
 button#themeswitch.btn.btn-light.btn-toggle{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
     user-select: none;
-    background-color: #4F5D75;
+    background-color: #4F5D75; /* independence (dark blue)*/
 }
 body.dark-theme .bg-nav {
-  background-color: #2D3142;
+  background-color: #2D3142; /* space cadet (dark blue)*/
 }
 body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme .nav-item:hover{
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme .dropdown-menu.show {
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme a.dropdown-item:hover {
-  background-color: #4F5D75;
-  color: #5D576B;
+  background-color: #4F5D75; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme div#landing.container.navbar-light.bg-landing{
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme a#nitin.list-group-item.list-group-item-action{
-  background-color: #EF8354;
+  background-color: #EF8354; /*mandarin*/
   margin-top:2%;
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme a#noah.list-group-item.list-group-item-action{
-  background-color: #EF8354;
+  background-color: #EF8354; /*mandarin*/
   margin-top:2%;
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme a#parth.list-group-item.list-group-item-action{
-  background-color: #EF8354;
+  background-color: #EF8354; /*mandarin*/
   margin-top:2%;
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme a#jake.list-group-item.list-group-item-action{
-  background-color: #EF8354;
+  background-color: #EF8354; /*mandarin*/
   margin-top:2%;
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme a#justin.list-group-item.list-group-item-action{
-  background-color: #EF8354;
+  background-color: #EF8354; /*mandarin*/
   margin-top:2%;
-  color:#2D3142;
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme a#nitin.list-group-item.list-group-item-action:hover{
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme a#noah.list-group-item.list-group-item-action:hover{
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme a#parth.list-group-item.list-group-item-action:hover{
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme a#jake.list-group-item.list-group-item-action:hover{
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme a#justin.list-group-item.list-group-item-action:hover{
-  background-color: #EB6A33;
+  background-color: #EB6A33; /*Orange Red*/
 }
 body.dark-theme div.list-group a{
-  background-color: #EF8354;
-  color: #403D39;
+  background-color: #EF8354; /*mandarin*/
+  color: #403D39; /*black olive*/
   font-family: 'pressstart2p';
 }
 body.dark-theme div.list-group a:hover{
-  background-color: #EB6A33;
-  color: #5D576B;
+  background-color: #EB6A33; /*Orange Red*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme div.col h1,body.dark-theme div.col p{
-    color: #BFC0C0;
+    color: #BFC0C0; /*silver*/
     font-family: 'pressstart2p';
 }
 body.dark-theme a#navbarDropdown.nav-link.dropdown-toggle {
-  color: #BFC0C0;
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme h2 {
     padding: 2%;
-    color:#BFC0C0;
+    color:#BFC0C0; /*silver*/
     font-family: 'pressstart2p';
 }
-
 body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
-  background-color:#EF8354 ;/**/
-  color:#2D3142 ;
+  background-color:#EF8354; /*mandarin*/
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }

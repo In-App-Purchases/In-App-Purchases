@@ -1,11 +1,11 @@
-@font-face {
+@font-face { /*declares the font family and where it is stored*/
   font-family: 'pressstart2p';
   src:url(/fonts/PressStart2P-Regular.ttf);
   font-style: normal;
 }
 body {
     user-select: none;
-    background-color: #99E1D9;
+    background-color: #99E1D9; /*Middle blue green*/
 }
 .container {
     margin-top: 1%;
@@ -14,7 +14,7 @@ body {
 }
 h2 {
     padding: 2%;
-    color: #FCFCFC;
+    color: #FCFCFC; /*white*/
     font-family: 'pressstart2p';
 }
 .landing {
@@ -22,165 +22,159 @@ h2 {
 }
 .form-group {
     padding: 1%;
-    color:#FCFCFC;
+    color:#FCFCFC; /*white*/
     font-family: 'pressstart2p';
 }
 input#inputEmail.form-control {
-  background-color: #FCFCFC;
-}
-.dark-mode {
-    filter: invert(100%);
+  background-color: #FCFCFC; /*white*/
 }
 .bg-nav {
-  background-color: #5D576B;
+  background-color: #5D576B; /* independence (dark blue)*/
 }
 nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #FCFCFC;
+  color: #FCFCFC; /*white*/
   font-family: 'pressstart2p';
 }
 div#landing.container.navbar-light.bg-light{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 .nav-item:hover{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 .dropdown-menu.show {
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 a.dropdown-item:hover {
-  background-color: #99E1D9;
+  background-color: #99E1D9; /*Middle blue green*/
 }
 div#landing.container.navbar-light.bg-landing{
-  background-color: #F7567C;
+  background-color: #F7567C; /*brink pink*/
 }
 button#submitLogin.btn.btn-light{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
 }
 button#submitLogin.btn.btn-light:hover{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 button#signInLink.btn.btn-light{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
 }
 button#signInLink.btn.btn-light:hover{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 button#cryptoAltButton.btn.btn-primary.btn-lg{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFFAE3;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
 }
 button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
-  color: #5D576B;
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
-  background-color: #FFF8D6;
+  background-color: #FFF8D6; /*cornsilk (pale yellowish-green*/
 }
 input#inputEmail1.form-control{
-  background-color: #FCFCFC;
+  background-color: #FCFCFC; /*white*/
 }
 input#inputPassword1.form-control{
-  background-color: #FCFCFC;
+  background-color: #FCFCFC; /*white*/
 }
 input#inputPassword2.form-control{
-  background-color: #FCFCFC;
+  background-color: #FCFCFC; /*white*/
 }
 button#themeswitch.btn.btn-light.btn-toggle{
-  background-color: #FFFAE3;
-  color: #5D576B;
+  background-color: #FFFAE3; /*cornsilk (pale yellowish-green*/
+  color: #5D576B; /* independence (dark blue)*/
   font-family: 'pressstart2p';
 }
 /*--------------------------dark mode below-------------------------------------*/
 body.dark-theme {
     user-select: none;
-    background-color: #4F5D75; /*dark blue*/
+    background-color: #4F5D75; /* independence (dark blue)*/
 }
 body.dark-theme h2 {
     padding: 2%;
-    color: #BFC0C0;
+    color: #BFC0C0; /*silver*/
     font-family: 'pressstart2p';
 }
 body.dark-theme .form-group {
     padding: 1%;
-    color:#BFC0C0;/*grey*/
+    color:#BFC0C0; /*silver*/
     font-family: 'pressstart2p';
 }
 body.dark-theme .bg-nav {
-  background-color:#2D3142;/*darker blue*/
+  background-color:#2D3142; /* space cadet (dark blue)*/
 }
 body.dark-theme nav.navbar.navbar-expand-lg.navbar-light.bg-nav a{
-  color: #BFC0C0; /*grey*/
+  color: #BFC0C0; /*silver*/
   font-family: 'pressstart2p';
 }
 body.dark-theme div#landing.container.navbar-light.bg-light{
-  background-color: #403D39;/*dark grey*/
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme .nav-item:hover{
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme .dropdown-menu.show {
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme a.dropdown-item:hover {
-  background-color: #4F5D75;
+  background-color: #4F5D75; /* independence (dark blue)*/
 }
 body.dark-theme div#landing.container.navbar-light.bg-landing{
-  background-color: #403D39;
+  background-color: #403D39; /*black olive*/
 }
 body.dark-theme button#submitLogin.btn.btn-light{
-  color: #2D3142;
-  background-color: #EF8354;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EF8354; /*mandarin*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#submitLogin.btn.btn-light:hover{
-  color: #2D3142;
-  background-color: #EB6A33;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EB6A33; /*Orange Red*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#signInLink.btn.btn-light{
-  color: #2D3142;
-  background-color: #EF8354;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EF8354; /*mandarin*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#signInLink.btn.btn-light:hover{
-  color: #2D3142;
-  background-color: #EB6A33;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EB6A33; /*Orange Red*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg{
-  color: #2D3142;
-  background-color: #EF8354;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EF8354; /*mandarin*/
   font-family: 'pressstart2p';
 }
 body.dark-theme button#cryptoAltButton.btn.btn-primary.btn-lg:hover{
-  color: #2D3142;
-  background-color: #EB6A33;
+  color: #2D3142; /* space cadet (dark blue)*/
+  background-color: #EB6A33; /*Orange Red*/
   font-family: 'pressstart2p';
 }
 body.dark-theme input#inputEmail1.form-control{
-  background-color: #BFC0C0;
+  background-color: #BFC0C0; /*silver*/
 }
 body.dark-theme input#inputPassword1.form-control{
-  background-color: #BFC0C0;
+  background-color: #BFC0C0; /*silver*/
 }
 body.dark-theme input#inputPassword2.form-control{
-  background-color: #BFC0C0;
+  background-color: #BFC0C0; /*silver*/
 }
 body.dark-theme button#themeswitch.btn.btn-light.btn-toggle{
-  background-color:#EF8354 ;/**/
-  color:#2D3142 ;
+  background-color:#EF8354; /*mandarin*/
+  color:#2D3142; /* space cadet (dark blue)*/
   font-family: 'pressstart2p';
 }
 body.dark-theme input#inputEmail.form-control {
-  background-color: #BFC0C0;
-}
-::-ms-input-placeholder { /* Microsoft Edge */
-    color: red;
+  background-color: #BFC0C0; /*silver*/
 }
