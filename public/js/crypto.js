@@ -402,25 +402,25 @@ jQuery(() => {
           purchaseEvent(14);
       });
 
-    $.get('/load', (res) => {
+    $.get('/load', (res) => { // this sends an initial request to load in savedata from the server
       try {
         saveData = res;
-        for(let item in saveData.manual) {
+        for(let item in saveData.manual) { // this loads in the manual upgrades
           saveData.manual[item] = parseInt(saveData.manual[item]);
         }
-        for(let item in saveData.auto) {
+        for(let item in saveData.auto) { // loads in the automatic upgrades
           saveData.auto[item] = parseInt(saveData.auto[item]);
         }
-        for(let item in saveData.event) {
+        for(let item in saveData.event) { // loads in the event upgrades
           saveData.event[item] = parseInt(saveData.event[item]);
         }
-        count = parseInt(res.count);
-        delta = parseInt(res.delta);
-        prestige = parseInt(res.pres) || 1;
-        $('#pres').text(`Prestige: ${prestige}`);
+        count = parseInt(res.count); // loads in the count
+        delta = parseInt(res.delta); // loads in the delta
+        prestige = parseInt(res.pres) || 1; // loads in the prestige
+        $('#pres').text(`Prestige: ${prestige}`); // updates the prestige html tag
         loadSavedata();
       } catch (err) {
-        count = 0;
+        count = 0; // in the case of an error, count and delta set to initial values
         delta = 1;
       }
     });
@@ -475,12 +475,12 @@ function playAudio2(id){
     x.play();
 }
 
-const click = () => {
+const click = () => { // this function is called each time a coin is clicked
     let randInt;
-    $.get('/coin', (res) => {
+    $.get('/coin', (res) => { // sends a request to get the user's coin
         userCoin =res;
     });
-    randInt = Math.floor(Math.random()*3)+1;
+    randInt = Math.floor(Math.random()*3)+1; // chooses an audio from a random group of coin specific audio files
     if(userCoin=='shiba'){
         playAudio2("inu"+randInt.toString())
 
@@ -490,7 +490,7 @@ const click = () => {
         playAudio2("mauri"+randInt)
     }
 
-    count = count + (delta*prestige);
-    $("#counter").text(`coins: ${Math.floor(count)}`);
-    randomUp++;
+    count = count + (delta*prestige); // increases coin based on delta, multiplied by prestige
+    $("#counter").text(`coins: ${Math.floor(count)}`); // updates displayed coin count
+    randomUp++; // increments random event counter
 }

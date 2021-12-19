@@ -1,26 +1,25 @@
 jQuery(() => {
 
-  $.post('/initLeaderboard', (res) => {
+  $.post('/initLeaderboard', (res) => { // initializes the leaderboard
     sendRequest();
     renderUsers(res);
   })
 
 });
 
-let users;
-
-const sendRequest = () => {
-  $.post('/leaderboardPoll', (res) => {
-    sendRequest();
-    renderUsers(res);
+const sendRequest = () => { // sends a REST Hook to the server
+  $.post('/leaderboardPoll', (res) => { // sends post request
+    sendRequest(); // upon response, sends another REST Hook
+    renderUsers(res); // re-renders the users
   });
 };
 
-const renderUsers = (data) => {
-  $('#leaderStats').html('');
-  data = bblSort(data);
-  for(let index in data) {
+const renderUsers = (data) => { // render user helper function
+  $('#leaderStats').html(''); // clears leaderboard
+  data = bblSort(data); // sorts data passed into function
+  for(let index in data) { // loops through data
     console.log(data[index]);
+    // appends a div representing a single leaderboard entry
     $('#leaderStats').append(`
     <hr />
     <div class="row">
@@ -35,7 +34,7 @@ const renderUsers = (data) => {
   }
 }
 
-function bblSort(arr){
+function bblSort(arr){ // bubble sort being used to sort scores from highest to lowest
   for(var i = 0; i < arr.length; i++){
     for(var j = 0; j < ( arr.length - i -1 ); j++){
       if(parseInt(arr[j].count) < parseInt(arr[j+1].count)){
